@@ -1,2 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
+
+body, html {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    background: #2A3132;
+    color: #fff;
+    min-width: 1327px;
+  }
+
+  h1 {
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    user-select: none;
+  }
+
