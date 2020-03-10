@@ -7,16 +7,31 @@ import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { AuthService } from './_services/auth.service';
 import { ErrorInterCeptorProvider } from './_services/error.interceptor';
+import { MainComponent } from './main/main.component';
+import { CharacterSelectionComponent } from './character-selection/character-selection.component';
+import { CharacterCreationComponent } from './character-creation/character-creation.component';
+import { CharacterMenuComponent } from './character-menu/character-menu.component';
+import { RouterModule } from '@angular/router';
+import { appRoutes } from './routes';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
    declarations: [
       AppComponent,
-      LandingComponent
+      LandingComponent,
+      MainComponent,
+      CharacterSelectionComponent,
+      CharacterCreationComponent,
+      CharacterMenuComponent,
+      LoginComponent,
+      RegisterComponent
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
-      FormsModule
+      FormsModule,
+      RouterModule.forRoot(appRoutes)
    ],
    providers: [
       AuthService,

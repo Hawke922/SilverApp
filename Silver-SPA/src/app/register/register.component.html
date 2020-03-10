@@ -1,0 +1,13 @@
+<form class="register-box" #registerForm="ngForm" (ngSubmit)="register()">
+  <h1>Register</h1>
+  <div class="username">
+    <input class = "text-field" type="text" required name="username" autocomplete="off" [(ngModel)]="model.username" placeholder="Username">
+  </div>
+  <div class="password">
+    <input class = "text-field" type="password" required name="password" autocomplete="off" [(ngModel)]="model.password" placeholder="Password">
+  </div>
+  <div class="buttons">
+    <input class = "button" [disabled]="!registerForm.valid" type="submit" value="Register">
+    <input class = "button" type="button" [routerLink]="['/landing']" value="Cancel">
+  </div>
+</form>

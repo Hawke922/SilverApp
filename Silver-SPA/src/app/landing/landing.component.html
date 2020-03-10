@@ -1,39 +1,11 @@
-<div *ngIf="!registerMode && !loginMode" class = "landing-menu">
+<div class = "landing-menu">
   <div class = "header">
     <h1>Project Silver</h1>
   </div>
   <div class="play">
-    <a href="#" (click)="loginToggle()">Play</a>
+    <a [routerLink]="['/login']">Play</a>
   </div>
   <div class="register">
-    <a href="#" (click)="registerToggle()">Register</a>
+    <a [routerLink]="['/register']">Register</a>
   </div>
 </div>
-
-<form *ngIf="loginMode" #loginForm="ngForm" class="login-box" (ngSubmit)="login()">
-  <h1>Login</h1>
-  <div class="username">
-    <input class = "text-field" type="text" name="username" placeholder="Username" required [(ngModel)]="model.username">
-  </div>
-  <div class="password">
-    <input class = "text-field" type="password" name="password" placeholder="Password" required [(ngModel)]="model.password">
-  </div>
-  <div class="buttons">
-    <input class = "button" [disabled]="!loginForm.valid" type="submit" value="Login">
-    <input class = "button" type="button" (click)="loginToggle()" value="Cancel">
-  </div>
-</form>
-
-<form *ngIf="registerMode" class="register-box" #registerForm="ngForm" (ngSubmit)="register()">
-  <h1>Register</h1>
-  <div class="username">
-    <input class = "text-field" type="text" required name="username" [(ngModel)]="model.username" placeholder="Username">
-  </div>
-  <div class="password">
-    <input class = "text-field" type="password" required name="password" [(ngModel)]="model.password" placeholder="Password">
-  </div>
-  <div class="buttons">
-    <input class = "button" [disabled]="!registerForm.valid" type="submit" value="Register">
-    <input class = "button" type="button" (click)="registerToggle()" value="Cancel">
-  </div>
-</form>

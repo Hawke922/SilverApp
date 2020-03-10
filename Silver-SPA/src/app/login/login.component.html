@@ -1,0 +1,13 @@
+<form #loginForm="ngForm" class="login-box" (ngSubmit)="login()">
+  <h1>Login</h1>
+  <div class="username">
+    <input class = "text-field" type="text" name="username" placeholder="Username" required autocomplete="off" [(ngModel)]="model.username">
+  </div>
+  <div class="password">
+    <input class = "text-field" type="password" name="password" placeholder="Password" autocomplete="off" required [(ngModel)]="model.password">
+  </div>
+  <div class="buttons">
+    <input class = "button" [disabled]="!loginForm.valid" type="submit" value="Login">
+    <input class = "button" type="button" [routerLink]="['/landing']" value="Cancel">
+  </div>
+</form>
