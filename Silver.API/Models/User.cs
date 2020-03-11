@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Silver.API.Models
 {
     public class User
@@ -6,5 +8,6 @@ namespace Silver.API.Models
         public string Username { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
+        public ICollection<Character> Characters { get; set; }
     }
 }
