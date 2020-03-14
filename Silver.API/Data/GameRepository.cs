@@ -30,6 +30,13 @@ namespace Silver.API.Data
             return user;
         }
 
+        public async Task<Character> GetCharacter(int id)
+        {
+            var character = await _context.Characters.Include(p => p.User).FirstOrDefaultAsync(u => u.Id == id);
+
+            return character;
+        }
+
         public async Task<bool> SaveAll()
         {
             return await _context.SaveChangesAsync() > 0;

@@ -1,0 +1,11 @@
+<div class="profile" *ngIf="loggedIn()">
+  <div class="profile-btn">
+    <a class="user-name" (click)="profileToggle()"><img src="https://imgur.com/aQFlSo0.png" alt="">{{ authService.decodedToken?.unique_name | titlecase }}</a>
+  </div>
+  <div class="dropdown" *ngIf="profToggle === true">
+    <ul>
+      <li><a class="dropdown-btn">Profile</a></li>
+      <li><a class="dropdown-btn" (click)="logout()">Logout</a></li>
+    </ul>
+  </div>
+</div>

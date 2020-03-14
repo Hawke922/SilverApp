@@ -1,3 +1,26 @@
-<p>
-  character-menu works!
-</p>
+<div class="container">
+  <div class="portrait-panel">
+    <div class="image">
+      <img src="{{ character.pictureUrl }}" alt="" />
+    </div>
+    <ul class="custom-button">
+      <li class="customization"><a>Customize</a></li>
+    </ul>
+  </div>
+  <div class="menu-panel">
+    <div class="name">
+      {{ character.name | titlecase }}
+    </div>
+    <div class="class">
+      {{ character.class | titlecase }}
+    </div>
+    <div class="menu">
+      <ul>
+        <li class="menu-option">Free Roam</li>
+        <li class="menu-option" id="campaign">Campaign</li>
+        <li class="menu-option" id="arena">Arena</li>
+        <li class="menu-option"[routerLink]="['/charselect']">Hero Selection</li>
+      </ul>
+    </div>
+  </div>
+</div>

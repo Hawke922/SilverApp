@@ -6,13 +6,14 @@ import { CharacterMenuComponent } from './character-menu/character-menu.componen
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { CharacterSelectionResolver } from './_resolvers/character-selection.resolver';
 
 export const appRoutes: Routes = [
     { path: 'landing', component: LandingComponent},
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent},
-    { path: 'charselect', component: CharacterSelectionComponent, canActivate: [AuthGuard]},
-    { path: 'charmenu', component: CharacterMenuComponent, canActivate: [AuthGuard]},
+    { path: 'charselect', component: CharacterSelectionComponent, canActivate: [AuthGuard], resolve: {user: CharacterSelectionResolver}},
+    { path: 'charmenu', component: CharacterMenuComponent, canActivate: [AuthGuard], resolve: {user: CharacterSelectionResolver}},
     { path: 'charcreate', component: CharacterCreationComponent, canActivate: [AuthGuard]},
-    { path: '**', redirectTo: 'landing', pathMatch: 'full'}
+    { path: '**', redirectTo: 'login', pathMatch: 'full'}
 ];

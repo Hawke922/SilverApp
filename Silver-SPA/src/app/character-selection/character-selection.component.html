@@ -1,4 +1,23 @@
-<p>
-  character-selection works!
-</p>
-<button (click)="logout()">Logout</button>
+<div class="wrapper">
+  <div
+    *ngFor="let character of user.characters"
+    class="character"
+    [routerLink]="['/charmenu']"
+    (click)="userService.pickCharacter(character.id)"
+  >
+    <div class="image">
+      <img src="{{ character.pictureUrl }}" alt="" />
+    </div>
+    <div class="info">
+      <div class="name">
+        {{ character.name | titlecase }}
+      </div>
+      <div class="class">
+        {{ character.class | titlecase }}
+      </div>
+    </div>
+  </div>
+  <div class="new-character">
+    +
+  </div>
+</div>
