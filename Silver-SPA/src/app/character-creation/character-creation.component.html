@@ -1,3 +1,43 @@
-<p>
-  character-creation works!
-</p>
+<div class="container">
+  <h2>Character Creation</h2>
+  <div class="character-creator">
+    <div class="portrait-panel">
+      <div class="portrait">
+        <router-outlet></router-outlet>
+      </div>
+      <ul>
+        <li class="male">
+          <a [routerLink]="['/charcreate/charmalegallery']"><i class="fa fa-mars"></i> Male</a>
+        </li>
+        <li class="female">
+          <a [routerLink]="['/charcreate/charfemalegallery']"><i class="fa fa-venus"></i> Female</a>
+        </li>
+      </ul>
+    </div>
+    <div class="form-panel">
+      <form action="">
+        <input type="text" name="name" required autocomplete="off"/>
+        <label for="name">Name</label>
+        <ngb-carousel *ngIf="classes" #carousel class="carousel">
+          <ng-template ngbSlide>
+            <div class="class-wrapper">
+              <p>{{ classes[0] | titlecase }}</p>
+            </div>
+          </ng-template>
+          <ng-template ngbSlide>
+            <div class="class-wrapper">
+              <p>{{ classes[1] | titlecase }}</p>
+            </div>
+          </ng-template>
+          <ng-template ngbSlide>
+            <div class="class-wrapper">
+              <p>{{ classes[2] | titlecase }}</p>
+            </div>
+          </ng-template>
+        </ngb-carousel>
+        <button type="submit">Accept</button>
+        <button [routerLink]="['/charselect']">Back</button>
+      </form>
+    </div>
+    </div>
+</div>

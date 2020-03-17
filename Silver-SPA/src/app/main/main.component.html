@@ -1,3 +1,18 @@
-<p>
-  main works!
-</p>
+<!--Swap hardcoded sources for DB queries-->
+<ngb-carousel *ngIf="classes" #carousel  >
+    <ng-template ngbSlide>
+      <div class="class-wrapper">
+        <p>{{classes[0]}}</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="class-wrapper">
+        <p>{{classes[1]}}</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="class-wrapper">
+        <p>{{classes[2]}}</p>
+      </div>
+    </ng-template>
+  </ngb-carousel>

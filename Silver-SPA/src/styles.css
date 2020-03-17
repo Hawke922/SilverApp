@@ -1,16 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
+@import "~bootstrap/dist/css/bootstrap.css";
+
+* {
+  margin: 0;
+  padding: 0;
+}
 
 body, html {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-align: center;
-    background: #2A3132;
-    color: #fff;
-    min-width: 1327px;
-  }
+  font: Calibri;
+  text-align: center;
+  color: #fff;
+  min-width: 1327px;
+}
 
-  h1 {
-    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-    user-select: none;
-  }
+h1 {
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  user-select: none;
+}
 
+.bg-skull {
+  background-image: url("https://imgur.com/WFHKg2S.png");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.bg-gradient {
+  background-image: url("https://imgur.com/ET7Hv8Y.png");
+  background-size: cover;
+  background-attachment: fixed;
+}

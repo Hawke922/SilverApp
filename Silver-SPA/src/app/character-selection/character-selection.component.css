@@ -11,9 +11,11 @@
 
 .new-character {
     display: flex;
-    width: 210px;
-    height: 330px;
-    background: #51403d;
+    width: 212px;
+    height: 334px;
+    background: #232829;
+    box-shadow: 10px 5px 15px #111;
+    color: #f1f1f1;
     border: 2px solid #000;
     border-radius: 0.02em;
     justify-content: center;
@@ -23,11 +25,12 @@
     user-select: none;
     transition: 0.3s;
     margin: 5px;
+    z-index: 1000;
 }
 
 .new-character:hover {
-    background-color: #820003;
-    box-shadow: 0 0 0.2em #820003;
+    background-color: #132552;
+    box-shadow: 0 0 0.2em #47577b;
     margin: 0 20px;
     transform: scale(1.1);
 }
@@ -36,6 +39,7 @@
     transition: 0.3s;
     position: relative;
     margin: 5px;
+    color: #f1f1f1;
 }
 
 .character:hover {
@@ -44,13 +48,14 @@
 }
 
 img:hover {
-    box-shadow: 0 0 3em #820003;
+    box-shadow: 0 0 3em #47577b;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 }
 
 img {
     border: 2px solid #000;
     border-radius: 0.2em;
+    box-shadow: 10px 5px 15px #111;
 }
 
 .info {
@@ -64,3 +69,4 @@ img {
 .name {
     font-size: 2.5em;
 }
+.new-character:focus {outline:0;}

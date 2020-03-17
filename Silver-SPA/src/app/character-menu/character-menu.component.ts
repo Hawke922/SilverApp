@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { User } from '../_models/user';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Character } from '../_models/character';
@@ -8,7 +8,7 @@ import { Character } from '../_models/character';
   templateUrl: './character-menu.component.html',
   styleUrls: ['./character-menu.component.css']
 })
-export class CharacterMenuComponent implements OnInit {
+export class CharacterMenuComponent implements OnInit, OnDestroy {
   user: User;
   character: Character;
 
@@ -19,6 +19,11 @@ export class CharacterMenuComponent implements OnInit {
       this.user = data['user'];
     });
     this.characterSelector();
+    document.body.classList.add('bg-gradient');
+  }
+  
+  ngOnDestroy() {
+    document.body.classList.remove('bg-gradient');
   }
 
   back() {

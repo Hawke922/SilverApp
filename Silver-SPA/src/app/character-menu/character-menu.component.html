@@ -4,7 +4,7 @@
       <img src="{{ character.pictureUrl }}" alt="" />
     </div>
     <ul class="custom-button">
-      <li class="customization"><a>Customize</a></li>
+      <li><a>Customize</a></li>
     </ul>
   </div>
   <div class="menu-panel">
@@ -16,10 +16,10 @@
     </div>
     <div class="menu">
       <ul>
-        <li class="menu-option">Free Roam</li>
-        <li class="menu-option" id="campaign">Campaign</li>
-        <li class="menu-option" id="arena">Arena</li>
-        <li class="menu-option"[routerLink]="['/charselect']">Hero Selection</li>
+        <li><a>Roam</a></li>
+        <li><a>Campaign</a></li>
+        <li><a>Arena</a></li>
+        <li><a [routerLink]="['/charselect']">Back</a></li>
       </ul>
     </div>
   </div>

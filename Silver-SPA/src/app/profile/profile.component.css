@@ -3,6 +3,7 @@
     right: 25px;
     max-width: 1327px;
     transform: scale(0.8);
+    user-select: none;
 }
 
 img {
@@ -21,8 +22,9 @@ img {
     padding: 13px 20px 13px 30px;
     border: 2px solid #000;
     border-radius: 0.3em;
-    background-color: rgb(35, 40, 41);
-    color: #fff;
+    background-color: #232829;
+    box-shadow: 8px 3px 10px #000;
+    color: #f1f1f1;
     font-size: 1.2em;
     text-decoration: none;
     transition: 0.3s;
@@ -30,7 +32,7 @@ img {
 }
 
 .user-name:hover {
-    background-color:#8200025e;
+    background-color:#13255294;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 }
 
@@ -49,20 +51,21 @@ img {
     list-style-type: none;
     border: 2px solid #000;
     border-radius: 0.3em;
-    background-color: rgb(35, 40, 41);
+    background-color: #232829;
+    box-shadow: 8px 3px 10px #000;
 }
 
 
 .dropdown-btn {
     display: block;
     padding: 10px 15px;
-    color: #fff;
+    color: #f1f1f1;
     text-decoration: none;
     transition: 0.3s;
     cursor: default;
 }
 
 .dropdown-btn:hover {
-    background-color:#8200025e;
+    background-color:#13255294;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 }

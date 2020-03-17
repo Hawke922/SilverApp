@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
@@ -18,6 +19,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CharacterSelectionResolver } from './_resolvers/character-selection.resolver';
 import { ProfileComponent } from './profile/profile.component';
+import { CharacterMaleGalleryComponent } from './character-creation/character-male-gallery/character-male-gallery.component';
+import { CharacterFemaleGalleryComponent } from './character-creation/character-female-gallery/character-female-gallery.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -33,7 +36,9 @@ export function tokenGetter() {
       CharacterMenuComponent,
       LoginComponent,
       RegisterComponent,
-      ProfileComponent
+      ProfileComponent,
+      CharacterMaleGalleryComponent,
+      CharacterFemaleGalleryComponent
    ],
    imports: [
       BrowserModule,
@@ -46,7 +51,8 @@ export function tokenGetter() {
             whitelistedDomains: ['localhost:5000'],
             blacklistedRoutes: ['localhost:5000/api/auth']
          }
-      })
+      }),
+      NgbModule
    ],
    providers: [
       AuthService,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { Router } from '@angular/router';
 
@@ -7,12 +7,16 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   model: any = {};
-
   constructor(public authService: AuthService, private router: Router) { }
 
   ngOnInit() {
+    document.body.classList.add('bg-skull');
+  }
+
+  ngOnDestroy() {
+    document.body.classList.remove('bg-skull');
   }
 
   login() {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { Router } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.css']
 })
-export class LandingComponent implements OnInit {
+export class LandingComponent implements OnInit, OnDestroy {
   model: any = {};
   registerMode = false;
   loginMode = false;
@@ -15,6 +15,11 @@ export class LandingComponent implements OnInit {
   constructor(public authService: AuthService, private router: Router) { }
 
   ngOnInit() {
+    document.body.classList.add('bg-skull');
+  }
+
+  ngOnDestroy() {
+    document.body.classList.remove('bg-skull');
   }
 
   loggedIn() {

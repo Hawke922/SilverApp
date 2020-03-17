@@ -1,22 +1,29 @@
-.login-box, .register-box{
+.login-box {
     position: absolute;
-    top: 40%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 3em 8em;
-    background: #51403d;
+    padding: 2em 8em 3em 8em;
+    background: #353232d0;
+    box-shadow: 10px 5px 15px #111;
+    color: #f1f1f1;
     border: 2px solid #000;
     border-radius: 0.3em;
     display:grid;
+    font-weight: bold;
 }
 
-.login-box input, .register-box input{
-    background: #2A3132;
+.login-box input {
+    background: #232829;
     text-align: center;
     border: 2px solid #000;
     border-radius: 0.3em;
-    color: #fff;
+    color: #f1f1f1;
     transition: 0.3s;
+}
+
+.login-box h1 {
+    margin-bottom: 1em;
 }
 
 .text-field{
@@ -27,8 +34,9 @@
 
 .button{
     width: 5em;
-    height: 3em;
+    height: 2.5em;
     margin: 0 0.5em;
+    color: #f1f1f1;
 }
 
 .button:disabled{
@@ -40,10 +48,8 @@
     background: transparent;
 }
 
-.login-box input:focus, .register-box input:focus, input[type = "submit"]:hover, input[type = "button"]:hover{
-    background-color: #820003;
-    box-shadow: 0 0 0.7em #820003;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+.login-box input:focus, input[type = "submit"]:hover, input[type = "button"]:hover{
+    box-shadow: 0 0 0.7em #47577b;
     overflow:auto;
 }
 
