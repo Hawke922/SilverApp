@@ -41,5 +41,20 @@ namespace Silver.API.Data
         {
             return await _context.SaveChangesAsync() > 0;
         }
+
+         public async Task<bool> CharacterExists(string name)
+        {
+            if (await _context.Characters.AnyAsync(x => x.Name == name))
+                return true;
+            
+            return false;
+        }
+
+        public async Task<Character> CreateCharacter(Character character)
+        {
+            await _context.Characters.AddAsync(character);
+            await _context.SaveChangesAsync();
+            return character;
+        }
     }
 }

@@ -1,58 +1,10 @@
 <!--Swap hardcoded sources for DB queries-->
 <ngb-carousel *ngIf="images" #carousel class="carousel">
-  <ng-template ngbSlide>
-    <div class="class-wrapper">
-      <img [src]="images[0]" alt="Random first slide">
+  <ng-template ngbSlide *ngFor="let image of images; let i = index">
+    <div class="portrait-wrapper">
+      <img #currentImage [attr.image-index]="i" [src]="images[i]">
     </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <div class="class-wrapper">
-      <img [src]="images[1]" alt="Random second slide">
-    </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <div class="class-wrapper">
-      <img [src]="images[2]" alt="Random third slide">
-    </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <div class="class-wrapper">
-      <img [src]="images[3]" alt="Random third slide">
-    </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <div class="class-wrapper">
-      <img [src]="images[4]" alt="Random third slide">
-    </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <div class="class-wrapper">
-      <img [src]="images[5]" alt="Random third slide">
-    </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <div class="class-wrapper">
-      <img [src]="images[6]" alt="Random third slide">
-    </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <div class="class-wrapper">
-      <img [src]="images[7]" alt="Random third slide">
-    </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <div class="class-wrapper">
-      <img [src]="images[8]" alt="Random third slide">
-    </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <div class="class-wrapper">
-      <img [src]="images[9]" alt="Random third slide">
-    </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <div class="class-wrapper">
-      <img [src]="images[10]" alt="Random third slide">
-    </div>
+    <br><button (click)="print(currentImage)">Console Log</button>
+    <p>{{ i }}</p>
   </ng-template>
 </ngb-carousel>

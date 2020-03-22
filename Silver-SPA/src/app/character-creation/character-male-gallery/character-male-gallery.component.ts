@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, EventEmitter, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { NgbCarouselConfig, NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -7,7 +7,7 @@ import { NgbCarouselConfig, NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./character-male-gallery.component.css'],
   providers: [NgbCarouselConfig]
 })
-export class CharacterMaleGalleryComponent implements AfterViewInit {
+export class CharacterMaleGalleryComponent implements AfterViewInit, OnChanges {
   @ViewChild('carousel') carousel: NgbCarousel;
 
   images = [
@@ -24,11 +24,20 @@ export class CharacterMaleGalleryComponent implements AfterViewInit {
    'https://imgur.com/IFc0SF4.png',
    'https://imgur.com/COzLQS2.png'
   ];
+
   constructor(config: NgbCarouselConfig) {
     config.showNavigationIndicators = false;
   }
 
+  print(currentImage) {
+    const pickedIndex = currentImage.getAttribute('image-index');
+    console.log('Image Id: ', pickedIndex);
+  }
+
   ngAfterViewInit() {
-    this.carousel.pause();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
   }
 }

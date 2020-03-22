@@ -32,4 +32,8 @@ export class UserService {
   deletePickedCharacter() {
     sessionStorage.removeItem('Activechar');
   }
+
+  createCharacter(model: any) {
+    return this.http.post(this.baseUrl + 'characters/create', model);
+  }
 }

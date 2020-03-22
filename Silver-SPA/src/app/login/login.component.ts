@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit, OnDestroy {
   model: any = {};
+  error;
   constructor(public authService: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.authService.login(this.model).subscribe(next => {
       console.log('Logged in successfully');
     }, error => {
+      this.error = error;
       console.log(error);
     }, () => {
       this.router.navigate(['/charselect']);

@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit, OnDestroy {
   model: any = {};
+  error;
 
   constructor(public authService: AuthService, private router: Router) { }
 
@@ -25,6 +26,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       console.log('registration successful');
     }, error => {
       console.log(error);
+      this.error = error;
     }, () => {
       this.router.navigate(['/login']);
   });

@@ -13,7 +13,6 @@ export class CharacterFemaleGalleryComponent implements AfterViewInit {
   images = [
       'https://imgur.com/DkVAodO.png',
       'https://imgur.com/CQygYqi.png',
-      'https://imgur.com/amhOEmN.png',
       'https://imgur.com/K4OxOWa.png',
       'https://imgur.com/gIZEGxA.png',
       'https://imgur.com/qswBfCf.png',
@@ -26,6 +25,12 @@ export class CharacterFemaleGalleryComponent implements AfterViewInit {
     constructor(config: NgbCarouselConfig) {
       config.showNavigationIndicators = false;
     }
+
+    
+  print(currentImage) {
+    const imageIndex = currentImage.getAttribute('image-index');
+    console.log('Image Id: ', imageIndex);
+  }
 
     ngAfterViewInit() {
       this.carousel.pause();

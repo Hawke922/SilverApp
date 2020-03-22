@@ -12,17 +12,14 @@ import { CharacterMaleGalleryComponent } from './character-creation/character-ma
 import { MainComponent } from './main/main.component';
 
 export const appRoutes: Routes = [
-    { path: 'landing', component: LandingComponent, children: [
-        { path: 'login', component: LoginComponent},
-        { path: 'register', component: RegisterComponent}
-    ]},
+    { path: 'landing', component: LandingComponent, data: { animation: 'isLeft'}},
     { path: 'main', component: MainComponent},
-    { path: 'login', component: LoginComponent},
-    { path: 'register', component: RegisterComponent},
+    { path: 'login', component: LoginComponent, data: { animation: 'isRight'}},
+    { path: 'register', component: RegisterComponent, data: { animation: 'isRight'}},
+    { path: 'charmalegallery', component: CharacterMaleGalleryComponent, canActivate: [AuthGuard]},
     { path: 'charselect', component: CharacterSelectionComponent, canActivate: [AuthGuard], resolve: {user: CharacterSelectionResolver}},
     { path: 'charmenu', component: CharacterMenuComponent, canActivate: [AuthGuard], resolve: {user: CharacterSelectionResolver}},
     { path: 'charcreate', component: CharacterCreationComponent, canActivate: [AuthGuard], children: [
-        { path: 'charfemalegallery', component: CharacterFemaleGalleryComponent, canActivate: [AuthGuard]},
-        { path: 'charmalegallery', component: CharacterMaleGalleryComponent, canActivate: [AuthGuard]}]},
+        { path: 'charfemalegallery', component: CharacterFemaleGalleryComponent, canActivate: [AuthGuard]}]},
     { path: '**', redirectTo: 'login', pathMatch: 'full'}
 ];

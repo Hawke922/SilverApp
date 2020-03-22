@@ -1,61 +1,176 @@
-.container {
+.character-menu {
     position: absolute;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    background: #51403d;
-    padding: 5em 5em 2em 5em;
+    grid-template-columns: 216px 1fr;
+    background: linear-gradient(35deg, #383737c4, #292626c7 100%);
+    box-shadow: 10px 5px 15px #111;
+    width: 800px;
+    padding: 50px;
     border: 2px solid #000;
-    border-radius: 0.3em;
-    min-width: 500px;
+    border-radius: 3px;
     user-select: none;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0em;
-}
-ul li a {
-    display: block;
-    text-decoration: none;
-    color: #fff;
-    padding: 0.5em;
-    margin: 1em 3em;
-    background: #2A3132;
-    text-align: center;
-    border: 2px solid #000;
-    border-radius: 0.3em;
-    transition: 0.3s;
     cursor: default;
 }
 
-ul li a:focus {outline:0;}
-
-ul li a:hover{
-    background-color: #820003;
-    box-shadow: 0 0 0.8em #820003;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    transform: scale(1.1);
+.menu-header {
+    display: flex;
+    justify-content: center;
 }
 
-#campaign, #arena {
-    opacity: 30%;
-    pointer-events: none;
+.character-info {
+  text-align: center;
+  border: 1px solid #000;
+  box-shadow: 0 0 8px #111;
+  padding: 5px 60px 10px 60px;
+  transform: skew(40deg);
+  overflow: hidden;
 }
 
-.name {
-    font-size: 2em;
-    font-weight: 800;
-    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+.character-info::before {
+  content: "";
+  position: absolute;
+  left: -40px;
+  right: 0;
+  top: 0;
+  width: 800px;
+  height: 90px;
+  background-color: #222222a4;
+  /*width: 315px;
+  height: 90px;
+  background: linear-gradient(to right,#0f0f0f,#222,#070707);*/
+  transform: skew(-40deg);
 }
-.class {
-    margin-bottom: 2em;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+
+.character-info h1 {
+    margin: 0;
+    padding: 0 0 5px 0;
+    font-size: 35px;
+    color: #f1f1f1;
+    text-shadow: -1px 0 #000, 0 1px 4px #000, 1px 0 4px #000, 0 -1px #000;
+    user-select: none;
+    transform: skew(-40deg);
+}
+
+.character-info h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    color: #f1f1f1;
+    text-shadow: -1px 0 #000, 0 1px 4px #000, 1px 0 4px #000, 0 -1px #000;
+    user-select: none;
+    transform: skew(-40deg);
+}
+
+.back {
+    position: absolute;
+    top: 350px;
+    right: 58px;
+    width: 100px;
+    height: 35px;
+    border: 2px solid #000;
+    padding-top: 2px;
+    box-shadow: 0 0 4px #111;
+    background: transparent;
+    transition: 0.2s;
+    color: #b3b3b3;
+    font-weight: bold;
+    transform: skew(40deg);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.back::before {
+  content: "";
+  position: absolute;
+  left: -15px;
+  right: 0;
+  top: 0;
+  width: 120px;
+  height: 35px;
+  background: linear-gradient(to right, #0f0f0f,#222,#070707);
+  transform: skew(-40deg);
+}
+
+.back span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  transform: skew(-40deg);
+}
+
+.back:focus, .box:focus {
+    outline:0;
+    box-shadow: 0 0 20px #760604c5;
+}
+
+.back:hover {
+    color: #fff;
 }
 
 img {
-    border: 3px solid #000;
-    border-radius: 0.3em;
+    border: 2px solid #000;
+    box-shadow: 0 0 4px #111;
+    border-radius: 3px;
+}
+
+.menu-wrapper {
+  margin-top: 25px;
+  margin-left: 75px;
+  text-align: left;
+}
+
+.menu-wrapper ul li {
+  width: 300px;
+  margin-bottom: 25px;
+  line-height: 50px;
+  list-style: none;
+}
+
+.menu-wrapper ul li a {
+  display: block;
+  color: #b3b3b3;
+  font-size: 23px;
+  font-weight: 500;
+  text-shadow: -1px 0 #000, 0 1px 3px #000, 1px 0 3px #000, 0 -1px #000;
+  transition: 0.3s;
+  text-decoration: none;
+  cursor: default;
+  user-select: none;
+}
+
+#arena {
+  margin-bottom: 0;
+}
+
+.menu-wrapper ul li a::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 150px;
+  width: 400px;
+  height: 50px;
+  background: linear-gradient(to right, transparent 5%, #760604c5 35%, transparent 60%);
+  transform: skew(40deg);
+  transition: 0.3s;
+  opacity: 0;
+}
+
+.menu-wrapper ul li a:hover::before {
+  left: 280px;
+  opacity:1;
+}
+
+.menu-wrapper ul li a:hover {
+  color: #f1f1f1;
+  font-size: 30px;
+}
+
+i {
+  position: relative;
+  left: -10px;
+  text-shadow: -1px 0 #000, 0 1px 5px #000, 1px 0 5px #000, 0 -1px #000;
 }

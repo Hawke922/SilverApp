@@ -1,4 +1,4 @@
-.container {
+.landing {
     display: grid;
     grid-template-columns: 1fr 2fr;
 }
@@ -14,37 +14,43 @@
 
 .menu-wrapper ul li {
     width: 400px;
+    margin-left: 100px;
     line-height: 50px;
     list-style: none;
-    transition: 0.3s;
-    transition-property: background;
 }
 
 .menu-wrapper ul li a {
-    margin-left: 100px;
     display: block;
-    height: 50px;
-    padding: 0, 10px;
     color: #b3b3b3;
     font-size: 20px;
     font-weight: 700;
     text-shadow: 3px 3px 3px #000;
+    transition: 0.3s;
+    text-decoration: none;
     cursor: default;
     user-select: none;
-    transition: 0.3s;
-    transition-property: background;
 }
 
-.menu-wrapper ul li:hover {
-    background: linear-gradient(to right, transparent, #47577b);
-    box-shadow: 8px 3px 5px #47577b65;
+.menu-wrapper ul li a::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -100px;
+    width: 500px;
+    height: 50px;
+    background: linear-gradient(to right, transparent 5%, #760604c5 95%);
+    box-shadow: 8px 3px 5px #7606046b;
     transform: skew(40deg);
-    margin-left: 40px;
+    transition: 0.3s;
+    opacity: 0;
 }
 
 .menu-wrapper ul li a:hover {
-    color: #fff;
-    transform: skew(-40deg);
-    margin-left: 50px;
-    text-decoration: none;
+    font-size: 25px;
+    color: #f1f1f1;
+}
+
+.menu-wrapper ul li a:hover::before {
+    opacity:1;
+    left: 0px;
 }

@@ -1,13 +1,16 @@
 <form #loginForm="ngForm" class="login-box" (ngSubmit)="login()">
   <h1>Login</h1>
+  <div class="error">
+    {{ error }}
+  </div>
   <div class="username">
-    <input class = "text-field" type="text" name="username" placeholder="Username" required autocomplete="off" [(ngModel)]="model.username">
+    <input class = "text-field" type="text" name="username" placeholder="Username" required autocomplete="off" spellcheck="false" [(ngModel)]="model.username">
   </div>
   <div class="password">
     <input class = "text-field" type="password" name="password" placeholder="Password" autocomplete="off" required [(ngModel)]="model.password">
   </div>
   <div class="buttons">
-    <input class = "button" [disabled]="!loginForm.valid" type="submit" value="Login">
-    <input class = "button" type="button" [routerLink]="['/landing']" value="Back">
+    <button class = "button" [disabled]="!loginForm.valid" type="submit" ><span>Login</span></button>
+    <button class = "button" [routerLink]="['/landing']"><span>Back</span></button>
   </div>
 </form>

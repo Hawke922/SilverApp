@@ -3,40 +3,80 @@
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 2em 8em 3em 8em;
+    padding: 40px 80px;
     background: #353232d0;
     box-shadow: 10px 5px 15px #111;
     color: #f1f1f1;
     border: 2px solid #000;
-    border-radius: 0.3em;
+    border-radius: 3px;
     display:grid;
     font-weight: bold;
 }
 
-.login-box input {
-    background: #232829;
+.text-field {
+    width: 300px;
+    height: 50px;
+    margin-bottom: 25px;
+    background: #2328297e;
     text-align: center;
     border: 2px solid #000;
-    border-radius: 0.3em;
+    box-shadow: 0 0 4px #111;
+    border-radius: 3px;
     color: #f1f1f1;
     transition: 0.3s;
 }
 
 .login-box h1 {
-    margin-bottom: 1em;
-}
-
-.text-field{
-    width: 15em;
-    height: 3em;
-    margin-bottom: 1em;
-}
-
-.button{
-    width: 5em;
-    height: 2.5em;
-    margin: 0 0.5em;
     color: #f1f1f1;
+    margin-bottom: 30px;
+    text-shadow: -1px 0 #000, 0 1px 4px #000, 1px 0 4px #000, 0 -1px #000;
+    user-select: none;
+}
+
+.button {
+    width: 100px;
+    height: 35px;
+    margin: 15px;
+    margin-top: 0;
+    border: 2px solid #000;
+    box-shadow: 0 0 4px #111;
+    background: transparent;
+    transition: 0.2s;
+    color: #b3b3b3;
+    font-weight: bold;
+    transform: skew(40deg);
+    overflow: hidden;
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    left: -14px;
+    right: 0;
+    top: 0;
+    width: 120px;
+    height: 35px;
+    background: linear-gradient(to right, #0f0f0f,#222,rgb(7, 7, 7));
+    transform: skew(-40deg);
+}
+
+.button span {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    right: 0;
+    transform: skew(-40deg);
+}
+
+.button:focus {
+    outline:0;
+    /*box-shadow: 0 0 20px #760604;*/
+}
+
+.button:hover {
+    color: #fff;
+    background: rgb(24, 24, 24);
+    /*box-shadow: 0 0 10px #760604;*/
 }
 
 .button:disabled{
@@ -48,12 +88,22 @@
     background: transparent;
 }
 
-.login-box input:focus, input[type = "submit"]:hover, input[type = "button"]:hover{
-    box-shadow: 0 0 0.7em #47577b;
-    overflow:auto;
+.login-box input:focus {
+    /*box-shadow: 0 0 10px #760604;*/
 }
 
+.error {
+    position: absolute;
+    left: 85px;
+    top: 167px;
+    font-size: 13px;
+    color: #760604;
+    text-shadow: -1px 0 #000, 0 1px 2px #000, 1px 0 2px #000, 0 -1px #000;
+}
+
+
 input:focus {outline:0;}
+
 input:focus::placeholder {
     color: transparent;
     text-shadow:none;

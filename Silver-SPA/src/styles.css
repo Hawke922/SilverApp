@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
+@import '../node_modules/rpg-awesome/css/rpg-awesome.css';
 @import "~bootstrap/dist/css/bootstrap.css";
 
 * {
@@ -14,11 +15,6 @@ body, html {
   min-width: 1327px;
 }
 
-h1 {
-  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-  user-select: none;
-}
-
 .bg-skull {
   background-image: url("https://imgur.com/WFHKg2S.png");
   background-size: cover;
@@ -26,7 +22,7 @@ h1 {
 }
 
 .bg-gradient {
-  background-image: url("https://imgur.com/ET7Hv8Y.png");
+  background-image: url("assets/bg/camp.jpg");
   background-size: cover;
   background-attachment: fixed;
 }

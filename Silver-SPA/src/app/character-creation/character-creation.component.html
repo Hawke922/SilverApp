@@ -1,43 +1,119 @@
-<div class="container">
-  <h2>Character Creation</h2>
+<div class="character-creation">
+  <div class="character-creation-info">
+    <h1>Character Creator</h1>
+  </div>
   <div class="character-creator">
     <div class="portrait-panel">
-      <div class="portrait">
-        <router-outlet></router-outlet>
-      </div>
-      <ul>
-        <li class="male">
-          <a [routerLink]="['/charcreate/charmalegallery']"><i class="fa fa-mars"></i> Male</a>
-        </li>
-        <li class="female">
-          <a [routerLink]="['/charcreate/charfemalegallery']"><i class="fa fa-venus"></i> Female</a>
-        </li>
-      </ul>
-    </div>
-    <div class="form-panel">
-      <form action="">
-        <input type="text" name="name" required autocomplete="off"/>
-        <label for="name">Name</label>
-        <ngb-carousel *ngIf="classes" #carousel class="carousel">
-          <ng-template ngbSlide>
-            <div class="class-wrapper">
-              <p>{{ classes[0] | titlecase }}</p>
-            </div>
-          </ng-template>
-          <ng-template ngbSlide>
-            <div class="class-wrapper">
-              <p>{{ classes[1] | titlecase }}</p>
-            </div>
-          </ng-template>
-          <ng-template ngbSlide>
-            <div class="class-wrapper">
-              <p>{{ classes[2] | titlecase }}</p>
+      <div class="carousel-male-portrait-wrapper" *ngIf="malePicked">
+        <div class="arrow-icons-portrait-left">
+          <i class="fa fa-chevron-left" (click)="malePortraitSwitchPrevious()"></i>
+        </div>
+        <ngb-carousel *ngIf="malePortraits" #carouselPortraitsMale class="carouselPortraits">
+          <ng-template ngbSlide *ngFor="let portrait of malePortraits; let i = index">
+            <div class="portrait-wrapper"> 
+              <img #currentPortrait [attr.portrait-index]="i" [src]="malePortraits[i]">
             </div>
           </ng-template>
         </ngb-carousel>
-        <button type="submit">Accept</button>
-        <button [routerLink]="['/charselect']">Back</button>
+        <div class="arrow-icons-portrait-right">
+          <i class="fa fa-chevron-right" (click)="malePortraitSwitchNext()"></i>
+        </div>
+      </div>
+      <div class="carousel-female-portrait-wrapper" *ngIf="!malePicked">
+        <div class="arrow-icons-portrait-left">
+          <i class="fa fa-chevron-left" (click)="femalePortraitSwitchPrevious()"></i>
+        </div>
+        <ngb-carousel *ngIf="femalePortraits" #carouselPortraitsFemale class="carouselPortraits">
+          <ng-template ngbSlide *ngFor="let portrait of femalePortraits; let i = index">
+            <div class="portrait-wrapper"> 
+              <img #currentPortrait [attr.portrait-index]="i" [src]="femalePortraits[i]">
+            </div>
+          </ng-template>
+        </ngb-carousel>
+        <div class="arrow-icons-portrait-right">
+          <i class="fa fa-chevron-right" (click)="femalePortraitSwitchNext()"></i>
+        </div>
+      </div>
+    </div>
+    <div class="form-panel">
+      <form #characterCreateForm="ngForm" (ngSubmit)="createCharacter()">
+        <label for="name">Name:</label>
+        <div class="error">
+          {{ error }}
+        </div>
+        <div class="name-input">
+          <input type="text" name="name" id="name" required autocomplete="off" spellcheck="false" [(ngModel)]="model.name" />
+        </div>
+        <label for="carouselGender">Gender:</label>
+        <div class="carousel-wrapper">
+          <div class="arrow-icons-left">
+            <i class="fa fa-chevron-left" (click)="genderSwitchPrevious()"></i>
+          </div>
+          <ngb-carousel #carouselGender id ="carouselGender" class="carousel">
+            <ng-template ngbSlide>
+              <div class="gender-wrapper">
+                <i class="fa fa-mars"></i>
+              </div>
+            </ng-template>
+            <ng-template ngbSlide>
+              <div class="gender-wrapper">
+                <i class="fa fa-venus"></i>
+              </div>
+            </ng-template>
+          </ngb-carousel>
+          <div class="arrow-icons-right">
+            <i class="fa fa-chevron-right" (click)="genderSwitchNext()"></i>
+          </div>
+        </div>
+        <label for="carouselClass">Class:</label>
+        <div class="carousel-wrapper">
+          <div class="arrow-icons-left">
+            <i class="fa fa-chevron-left" (click)="classSwitchPrevious()"></i>
+          </div>
+          <ngb-carousel #carouselClass id ="carouselClass" class="carousel">
+            <ng-template ngbSlide>
+              <div class="class-wrapper">
+                <i class="ra ra-axe ra-lg"></i>
+              </div>
+            </ng-template>
+            <ng-template ngbSlide>
+              <div class="class-wrapper">
+                <i class="ra ra-plain-dagger ra-lg"></i>
+              </div>
+            </ng-template>
+            <ng-template ngbSlide>
+              <div class="class-wrapper">
+                <i class="ra ra-crystal-wand ra-lg"></i>
+              </div>
+            </ng-template>
+          </ngb-carousel>
+          <div class="arrow-icons-right">
+            <i class="fa fa-chevron-right" (click)="classSwitchNext()"></i>
+          </div>
+        </div>
+        <div class="class-description">
+          <div class="description-warrior" *ngIf="carouselClass.activeId === 'ngb-slide-2'">
+            <h2>Warriors</h2>
+            <p>For as long as war has raged, heroes from every race have aimed to master the art of battle. Warriors combine strength, leadership, and a vast knowledge of arms and armor to wreak havoc in glorious combat. Some protect from the front lines with shields, locking down enemies while allies support the warrior from behind with spell and bow. Others forgo the shield and unleash their rage at the closest threat with a variety of deadly weapons.</p>
+            <h2>Specializations</h2>
+            <p>Warrior talents can improve their already considerable defenses with a shield, increase their deadliness with two-handed weapons, or bolster their savagery while dual-wielding.</p>
+          </div>
+          <div class="description-rogue" *ngIf="carouselClass.activeId === 'ngb-slide-3'">
+            <h2>Rogues</h2>
+            <p>For rogues, the only code is the contract, and their honor is purchased in gold. Free from the constraints of a conscience, these mercenaries rely on brutal and efficient tactics. Lethal assassins and masters of stealth, they will approach their marks from behind, piercing a vital organ and vanishing into the shadows before the victim hits the ground.</p>
+            <h2>Specializations</h2>
+            <p>Rogue talents can strengthen their ability to hide in shadows, kill foes with quick, deadly strikes, and survive in extended slugfests.</p>
+          </div>
+          <div class="description-mage" *ngIf="carouselClass.activeId === 'ngb-slide-4'">
+            <h2>Mages</h2>
+            <p>Students gifted with a keen intellect and unwavering discipline may walk the path of the mage. The arcane magic available to magi is both great and dangerous, and thus is revealed only to the most devoted practitioners. To avoid interference with their spellcasting, magi wear only cloth armor, but arcane shields and enchantments give them additional protection. To keep enemies at bay, magi can summon bursts of fire to incinerate distant targets and cause entire areas to erupt, setting groups of foes ablaze.</p>
+            <h2>Specializations</h2>
+            <p>Mage talents focus on enhancing individual schools of magic – quick, aggressive Fire spells; efficient, controlling Frost spells and punishing Arcane spells.</p>
+          </div>
+        </div>
+        <button class="button" type="submit"><span>Accept</span></button>
+        <button class="button" [routerLink]="['/charselect']"><span>Back</span></button>
       </form>
     </div>
-    </div>
+  </div>
 </div>

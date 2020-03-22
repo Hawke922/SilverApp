@@ -1,25 +1,24 @@
-<div class="container">
+<div class="character-menu">
   <div class="portrait-panel">
     <div class="image">
       <img src="{{ character.pictureUrl }}" alt="" />
     </div>
-    <ul class="custom-button">
-      <li><a>Customize</a></li>
-    </ul>
   </div>
-  <div class="menu-panel">
-    <div class="name">
-      {{ character.name | titlecase }}
+  <div class="menu">
+    <div class="menu-header">
+      <div class="character-info">
+        <h1>{{ character.name | titlecase }}</h1>
+        <h2><i class="ra ra-axe ra-lg"></i>{{ character.class | titlecase }}</h2>
+      </div>
+      <div class="back" [routerLink]="['/charselect']">
+        <span>Back</span>
+      </div>
     </div>
-    <div class="class">
-      {{ character.class | titlecase }}
-    </div>
-    <div class="menu">
+    <div class="menu-wrapper">
       <ul>
-        <li><a>Roam</a></li>
-        <li><a>Campaign</a></li>
-        <li><a>Arena</a></li>
-        <li><a [routerLink]="['/charselect']">Back</a></li>
+        <li><a href=""><i class="ra ra-sword ra-lg"></i><span> Free Roam</span></a></li>
+        <li><a href=""><i class="ra ra-scroll-unfurled ra-lg"></i><span> Campaign</span></a></li>
+        <li id = "arena"><a href=""><i class="ra ra-arena ra-lg"></i><span> Arena</span></a></li>
       </ul>
     </div>
   </div>

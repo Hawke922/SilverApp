@@ -3,8 +3,7 @@
       *ngFor="let character of user.characters"
       class="character"
       [routerLink]="['/charmenu']"
-      (click)="userService.pickCharacter(character.id)"
-    >
+      (click)="userService.pickCharacter(character.id)">
       <div class="image">
         <img src="{{ character.pictureUrl }}" alt="" />
       </div>
@@ -17,9 +16,5 @@
         </div>
       </div>
     </div>
-    <div class="new-character"
-    [routerLink]="['/charcreate/charmalegallery']"
-    >
-      +
-    </div>
+    <div class="new-character" [routerLink]="['/charcreate']">+</div>
   </div>
