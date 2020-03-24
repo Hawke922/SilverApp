@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { User } from '../_models/user';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Character } from '../_models/character';
 
@@ -9,19 +8,17 @@ import { Character } from '../_models/character';
   styleUrls: ['./character-menu.component.css']
 })
 export class CharacterMenuComponent implements OnInit, OnDestroy {
-  user: User;
   character: Character;
 
   constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      this.user = data['user'];
+      this.character = data['character'];
     });
-    this.characterSelector();
     document.body.classList.add('bg-gradient');
   }
-  
+
   ngOnDestroy() {
     document.body.classList.remove('bg-gradient');
   }
@@ -30,13 +27,15 @@ export class CharacterMenuComponent implements OnInit, OnDestroy {
     this.router.navigate(['/charselect']);
   }
 
-  characterSelector() {
-    for (const char of this.user.characters) {
-      const entries = Object.entries(char);
-      const activeChar = parseInt(sessionStorage.getItem('Activechar'), 10);
-      if (entries[0].includes(activeChar)) {
-        this.character = char;
-      }
-    }
-  }
+  // characterLoad() {
+  //   for (const char of this.user.characters) {
+  //     const entries = Object.entries(char);
+  //     const activeChar = parseInt(sessionStorage.getItem('Activechar'), 10);
+  //     if (entries[0].includes(activeChar)) {
+  //       this.route.data.subscribe(data => {
+  //         this.character = data['character'];
+  //       });
+  //     }
+  //   }
+  // }
 }

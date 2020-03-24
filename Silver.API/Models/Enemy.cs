@@ -1,11 +1,13 @@
 namespace Silver.API.Models
 {
-    public class Character
+    public class Enemy
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Class { get; set; }
         public string PictureUrl { get; set; }
+        public string ThumbnailUrl { get; set; }
+        public string DescriptionLong { get; set; }
+        public string DescriptionShort { get; set; }
         public int Hp { get; set; }
         public int FastAttack { get; set; }
         public int StrongAttack { get; set; }
@@ -25,9 +27,8 @@ namespace Silver.API.Models
         public string fastDefAbilityIcon { get; set; }
         public string StrongDefAbilityIcon { get; set; }
         public string SpecialDefAbilityIcon { get; set; }
-        public string ClassIcon { get; set; }
-        public int CharacterCounter { get; set; }
-        public User User { get; set; }
-        public int UserId { get; set; }
+        public bool IsBoss { get; set; }
+        public Dungeon Dungeon { get; set; }
+        public int DungeonId { get; set; }
     }
 }

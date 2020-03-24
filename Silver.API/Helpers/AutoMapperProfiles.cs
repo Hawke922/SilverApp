@@ -10,6 +10,7 @@ namespace Silver.API.Helpers
         {
             CreateMap<User, UserForMenusDto>();
             CreateMap<Character, CharacterDto>();
+            CreateMap<Character, CharacterForMenuDto>();
         }
     }
 }

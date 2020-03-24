@@ -1,25 +1,56 @@
 <div class="character-menu">
+  <div class="character-menu-header">
+    <h1>Preparation and Loadout</h1>
+  </div>
   <div class="portrait-panel">
-    <div class="image">
+    <div class="portrait">
       <img src="{{ character.pictureUrl }}" alt="" />
     </div>
   </div>
   <div class="menu">
-    <div class="menu-header">
-      <div class="character-info">
-        <h1>{{ character.name | titlecase }}</h1>
-        <h2><i class="ra ra-axe ra-lg"></i>{{ character.class | titlecase }}</h2>
+    <div class="character-info">
+      <div class="class-icon">
+        <i class="ra {{ character.classIcon }} ra-lg" id="class-icon"></i>
       </div>
-      <div class="back" [routerLink]="['/charselect']">
-        <span>Back</span>
+      <h1>{{ character.name | titlecase }}</h1>
+      <h2>{{ character.class | titlecase }}</h2>
+    </div>
+    <div class="stats">
+      <h3>Offensive Abilities:</h3>
+      <div class="offense">
+        <div class="strong-attack" ngbTooltip="Strong Attack Power: {{ character.strongAttack }}" tooltipClass="tooltip">
+          <i class="ra {{ character.strongAttAbilityIcon }} ra-lg"></i><span>{{ character.strongAttAbility }}</span>
+        </div>
+        <div class="fast-attack" ngbTooltip="Fast Attack Power: {{ character.fastAttack }}" tooltipClass="tooltip">
+          <i class="ra {{ character.fastAttAbilityIcon }} ra-lg"></i><span>{{ character.fastAttAbility }}</span>
+        </div>
+        <div class="special-attack" ngbTooltip="Special Attack Power: {{ character.specialAttack }}" tooltipClass="tooltip">
+          <i class="ra {{ character.specialAttAbilityIcon }} ra-lg"></i><span>{{ character.specialAttAbility }}</span>
+        </div>
+      </div>
+      <h3>Defensive Abilities:</h3>
+      <div class="defense">
+        <div class="strong-defense" ngbTooltip="Strong Defense Raiting: {{ character.strongDefense }}" tooltipClass="tooltip">
+          <i class="ra {{ character.strongDefAbilityIcon }} ra-lg"></i><span>{{ character.strongDefAbility }}</span>
+        </div>
+        <div class="fast-defense" ngbTooltip="Fast Defense Raiting: {{ character.fastDefense }}" tooltipClass="tooltip">
+          <i class="ra {{ character.fastDefAbilityIcon }} ra-lg"></i><span>{{ character.fastDefAbility }}</span>
+        </div>
+        <div class="special-defense" ngbTooltip="Special Defense Raiting: {{ character.specialDefense }}" tooltipClass="tooltip">
+          <i class="ra {{ character.specialDefAbilityIcon }} ra-lg"></i><span>{{ character.specialDefAbility }}</span>
+        </div>
+      </div>
+      <h3>Passives:</h3>
+      <div class="passive">
+        <div class="health">
+          <i class="ra ra-hearts ra-lg"></i><span>Health: {{ character.hp }}</span>
+        </div>
+        <div class="crit">
+          <i class="ra ra-on-target ra-lg"></i><span>Critical Chance: 5%</span>
+        </div>
       </div>
     </div>
-    <div class="menu-wrapper">
-      <ul>
-        <li><a href=""><i class="ra ra-sword ra-lg"></i><span> Free Roam</span></a></li>
-        <li><a href=""><i class="ra ra-scroll-unfurled ra-lg"></i><span> Campaign</span></a></li>
-        <li id = "arena"><a href=""><i class="ra ra-arena ra-lg"></i><span> Arena</span></a></li>
-      </ul>
-    </div>
+    <button id="back" [routerLink]="['/charselect']"><span>Back</span></button>
   </div>
+  <button id="proceed"><span>Proceed</span></button>
 </div>

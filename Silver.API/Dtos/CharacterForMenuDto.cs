@@ -1,6 +1,8 @@
-namespace Silver.API.Models
+using Silver.API.Models;
+
+namespace Silver.API.Dtos
 {
-    public class Character
+    public class CharacterForMenuDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -26,8 +28,5 @@ namespace Silver.API.Models
         public string StrongDefAbilityIcon { get; set; }
         public string SpecialDefAbilityIcon { get; set; }
         public string ClassIcon { get; set; }
-        public int CharacterCounter { get; set; }
-        public User User { get; set; }
-        public int UserId { get; set; }
     }
 }

@@ -11,7 +11,6 @@ import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { AuthService } from './_services/auth.service';
 import { ErrorInterCeptorProvider } from './_services/error.interceptor';
-import { MainComponent } from './main/main.component';
 import { CharacterSelectionComponent } from './character-selection/character-selection.component';
 import { CharacterCreationComponent } from './character-creation/character-creation.component';
 import { CharacterMenuComponent } from './character-menu/character-menu.component';
@@ -20,8 +19,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CharacterSelectionResolver } from './_resolvers/character-selection.resolver';
 import { ProfileComponent } from './profile/profile.component';
-import { CharacterMaleGalleryComponent } from './character-creation/character-male-gallery/character-male-gallery.component';
-import { CharacterFemaleGalleryComponent } from './character-creation/character-female-gallery/character-female-gallery.component';
+import { CharacterDetailResolver } from './_resolvers/character-detail.resolver';
+import { DungeonMenuComponent } from './dungeon-menu/dungeon-menu.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -31,15 +30,13 @@ export function tokenGetter() {
    declarations: [
       AppComponent,
       LandingComponent,
-      MainComponent,
       CharacterSelectionComponent,
       CharacterCreationComponent,
       CharacterMenuComponent,
       LoginComponent,
       RegisterComponent,
       ProfileComponent,
-      CharacterMaleGalleryComponent,
-      CharacterFemaleGalleryComponent
+      DungeonMenuComponent
    ],
    imports: [
       BrowserModule,
@@ -52,14 +49,15 @@ export function tokenGetter() {
             whitelistedDomains: ['localhost:5000'],
             blacklistedRoutes: ['localhost:5000/api/auth']
          }
-      }),
+}),
       NgbModule,
       BrowserAnimationsModule
    ],
    providers: [
       AuthService,
       ErrorInterCeptorProvider,
-      CharacterSelectionResolver
+      CharacterSelectionResolver,
+      CharacterDetailResolver
    ],
    bootstrap: [
       AppComponent
