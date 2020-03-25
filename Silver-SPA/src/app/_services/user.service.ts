@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { User } from '../_models/user';
 import { Character } from '../_models/character';
 
@@ -10,6 +10,8 @@ import { Character } from '../_models/character';
 })
 export class UserService {
   baseUrl = environment.apiUrl;
+  private characterSource = new BehaviorSubject<number>(999);
+  activeCharacter = this.characterSource.asObservable();
 
   constructor(private http: HttpClient) {}
 
@@ -21,19 +23,11 @@ export class UserService {
     return this.http.get<Character>(this.baseUrl + 'characters/' + id);
   }
 
-  pickCharacter(id) {
-    sessionStorage.setItem('Activechar', id);
-  }
-
-  getPickedCharacter() {
-    return sessionStorage.getItem('Activechar');
-  }
-
-  deletePickedCharacter() {
-    sessionStorage.removeItem('Activechar');
-  }
-
   createCharacter(model: any) {
     return this.http.post(this.baseUrl + 'characters/create', model);
+  }
+
+  setActiveCharacter(characterId: number) {
+    this.characterSource.next(characterId);
   }
 }

@@ -2,8 +2,8 @@
     <div
       *ngFor="let character of user.characters"
       class="character"
-      [routerLink]="['/charmenu']"
-      (click)="userService.pickCharacter(character.id)">
+      (click)="activateCharacter(character.id)"
+      [routerLink]="['/charselect/', character.id]">
       <div class="image">
         <img src="{{ character.pictureUrl }}" alt="" />
       </div>

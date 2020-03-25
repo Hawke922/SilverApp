@@ -27,6 +27,7 @@ namespace Silver.API.Models
         public string SpecialDefAbilityIcon { get; set; }
         public string ClassIcon { get; set; }
         public int CharacterCounter { get; set; }
+        public int ActiveDungeonId { get; set; }
         public User User { get; set; }
         public int UserId { get; set; }
     }

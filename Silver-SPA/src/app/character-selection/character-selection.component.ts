@@ -10,10 +10,12 @@ import { UserService } from '../_services/user.service';
 })
 export class CharacterSelectionComponent implements OnInit, OnDestroy {
   user: User;
+  activeCharacter: number;
 
   constructor(private router: Router, private route: ActivatedRoute, public userService: UserService) { }
 
   ngOnInit() {
+    this.userService.activeCharacter.subscribe(characterId => this.activeCharacter = characterId);
     this.route.data.subscribe(data => {
       this.user = data['user'];
     });
@@ -24,13 +26,7 @@ export class CharacterSelectionComponent implements OnInit, OnDestroy {
     document.body.classList.remove('bg-gradient');
   }
 
-  logout() {
-    localStorage.removeItem('token');
-    console.log('Logged out');
-    this.router.navigate(['/landing']);
-  }
-
-  getChar() {
-    console.log(this.userService.getPickedCharacter());
+  activateCharacter(characterId) {
+    this.userService.setActiveCharacter(characterId);
   }
 }

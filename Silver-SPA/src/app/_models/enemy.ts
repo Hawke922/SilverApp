@@ -1,10 +1,10 @@
-export interface Character {
+export interface Enemy {
     id: number;
     name: string;
-    class: string;
-    classIcon: string;
     pictureUrl: string;
-    activeDungeonId: number;
+    thumbnailUrl: string;
+    descriptionLong: string;
+    descriptionShort: string;
     hp: number;
     fastAttack: number;
     strongAttack: number;
@@ -24,4 +24,6 @@ export interface Character {
     fastDefAbilityIcon: string;
     strongDefAbilityIcon: string;
     specialDefAbilityIcon: string;
+    isBoss: boolean;
+    dungeonId: number;
 }

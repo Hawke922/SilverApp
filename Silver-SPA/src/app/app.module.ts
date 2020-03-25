@@ -21,6 +21,8 @@ import { CharacterSelectionResolver } from './_resolvers/character-selection.res
 import { ProfileComponent } from './profile/profile.component';
 import { CharacterDetailResolver } from './_resolvers/character-detail.resolver';
 import { DungeonMenuComponent } from './dungeon-menu/dungeon-menu.component';
+import { DungeonMenuResolver } from './_resolvers/dungeon-menu.resolver';
+import { UserService } from './_services/user.service';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -57,7 +59,9 @@ export function tokenGetter() {
       AuthService,
       ErrorInterCeptorProvider,
       CharacterSelectionResolver,
-      CharacterDetailResolver
+      CharacterDetailResolver,
+      DungeonMenuResolver,
+      UserService
    ],
    bootstrap: [
       AppComponent

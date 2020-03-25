@@ -28,5 +28,6 @@ namespace Silver.API.Dtos
         public string StrongDefAbilityIcon { get; set; }
         public string SpecialDefAbilityIcon { get; set; }
         public string ClassIcon { get; set; }
+        public int ActiveDungeonId { get; set; }
     }
 }

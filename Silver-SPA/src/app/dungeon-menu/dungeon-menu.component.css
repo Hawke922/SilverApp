@@ -1,0 +1,54 @@
+.dungeon-menu {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: -1;
+    width: 920px;
+    margin-bottom: 100px;
+    padding-left: 60px;
+    padding-right: 50px;
+    display: grid;
+    grid-template-columns: 214px 1fr;
+    grid-auto-rows: minmax(44px auto);
+    border: 2px solid #000;
+    border-radius: 3px;
+    background: linear-gradient(35deg, #383737c4, #292626c7 100%);
+    box-shadow: 10px 5px 15px #111;
+    user-select: none;
+    cursor: default;
+  }
+  
+.dungeon-menu-header {
+    grid-column: 1/3;
+    justify-self: center;
+    width: 400px;
+    margin: 40px;
+    padding-bottom: 3px;
+    border: 1px solid #000;
+    box-shadow: 0 0 8px #111;
+    transform: skew(40deg);
+    overflow: hidden;
+}
+  
+.dungeon-menu-header::before {
+    content: "";
+    position: absolute;
+    left: -30px;
+    top: -5px;
+    right: 0;
+    width: 450px;
+    height: 55px;
+    background-color: #222222a4;
+    transform: skew(-40deg);
+}
+  
+.dungeon-menu-header h1 {
+    margin: 0;
+    font-size: 32px;
+    color: #f1f1f1;
+    text-shadow: -1px 0 #000, 0 1px 4px #000, 1px 0 4px #000, 0 -1px #000;
+    user-select: none;
+    transform: skew(-40deg);
+}
+  

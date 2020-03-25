@@ -10,7 +10,7 @@ export class CharacterDetailResolver implements Resolve<Character> {
     constructor(private userService: UserService, private router: Router) {}
 
     resolve(route: ActivatedRouteSnapshot): Observable<Character> {
-        return this.userService.getCharacter(sessionStorage.getItem('Activechar')).pipe(catchError( error => {
+        return this.userService.getCharacter(route.params['id']).pipe(catchError( error => {
             console.log('Problem retrieving character data')
             this.router.navigate(['/charselect']);
             return of(null);

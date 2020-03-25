@@ -29,6 +29,12 @@ namespace Silver.API.Data
 
             return user;
         }
+        public async Task<Character> CreateCharacter(Character character)
+        {
+            await _context.Characters.AddAsync(character);
+            await _context.SaveChangesAsync();
+            return character;
+        }
 
         public async Task<Character> GetCharacter(int id)
         {
@@ -36,6 +42,20 @@ namespace Silver.API.Data
 
             return character;
         }
+
+        public async Task<Dungeon> GetDungeon(int id)
+        {
+            var dungeon = await _context.Dungeons.Include(p => p.Enemies).FirstOrDefaultAsync(u => u.Id == id);
+
+            return dungeon;
+        }
+
+        public async Task<Enemy> GetEnemy(int id)
+        {
+            var enemy = await _context.Enemies.Include(p => p.Dungeon).FirstOrDefaultAsync(u => u.Id == id);
+
+            return enemy;
+        }      
 
         public async Task<bool> SaveAll()
         {
@@ -48,13 +68,6 @@ namespace Silver.API.Data
                 return true;
             
             return false;
-        }
-
-        public async Task<Character> CreateCharacter(Character character)
-        {
-            await _context.Characters.AddAsync(character);
-            await _context.SaveChangesAsync();
-            return character;
         }
     }
 }

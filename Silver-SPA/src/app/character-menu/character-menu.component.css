@@ -143,26 +143,31 @@
 }
 
 .strong-attack i, .strong-defense i {
-  background: #470d0d;
+  background: linear-gradient(#800600, #470d0d);
+  color: #dfdfdf;
   border: 2px solid #000;
   box-shadow: 0 0 4px #111;
 }
 
 .fast-attack i, .fast-defense i {
-  background: #043504;
+  background: linear-gradient(#0a701b, #0c4705);
+  color: #dfdfdf;
   border: 2px solid #000;
   box-shadow: 0 0 4px #111;
 }
 
 .special-attack i, .special-defense i {
-  background: #01013b;
+  background: linear-gradient(#362361, #250e3a);
+  color: #dfdfdf;
   border: 2px solid #000;
   box-shadow: 0 0 4px #111;
 }
 
 .health i, .crit i {
-  background: #836502;
+  background: linear-gradient(#f5690c, #993304);
+  color: #dfdfdf;
   border: 2px solid #000;
+  border-radius: 50%;
   box-shadow: 0 0 4px #111;
 }
 
@@ -178,7 +183,7 @@
   background: transparent;
   color: #b3b3b3;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 500;
   transform: skew(40deg);
   overflow: hidden;
 }
@@ -209,8 +214,8 @@
 
 #proceed:hover {
   color: #fff;
-  border-bottom: 1px solid #000;
-  border-right: 1px solid #000;
+  border-bottom: 2px solid #333;
+  border-right: 2px solid #222;
 }
 
 #proceed:hover::before {
@@ -265,3 +270,10 @@
 }
 
 #back:focus {outline:0;}
+
+#jaj {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}

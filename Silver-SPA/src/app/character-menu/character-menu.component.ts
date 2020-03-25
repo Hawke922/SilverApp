@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Character } from '../_models/character';
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-character-menu',
@@ -9,10 +10,12 @@ import { Character } from '../_models/character';
 })
 export class CharacterMenuComponent implements OnInit, OnDestroy {
   character: Character;
+  activeCharacter: number;
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private route: ActivatedRoute, public userService: UserService) {}
 
   ngOnInit() {
+    this.userService.activeCharacter.subscribe(characterId => this.activeCharacter = characterId);
     this.route.data.subscribe(data => {
       this.character = data['character'];
     });
@@ -23,19 +26,4 @@ export class CharacterMenuComponent implements OnInit, OnDestroy {
     document.body.classList.remove('bg-gradient');
   }
 
-  back() {
-    this.router.navigate(['/charselect']);
-  }
-
-  // characterLoad() {
-  //   for (const char of this.user.characters) {
-  //     const entries = Object.entries(char);
-  //     const activeChar = parseInt(sessionStorage.getItem('Activechar'), 10);
-  //     if (entries[0].includes(activeChar)) {
-  //       this.route.data.subscribe(data => {
-  //         this.character = data['character'];
-  //       });
-  //     }
-  //   }
-  // }
 }

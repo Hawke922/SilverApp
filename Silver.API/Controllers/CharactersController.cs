@@ -20,7 +20,6 @@ namespace DatingApp.API.Controllers
         {
             _mapper = mapper;
             _repo = repo;
-
         }
 
         [HttpGet("{id}")]
@@ -48,6 +47,8 @@ namespace DatingApp.API.Controllers
                 characterToCreate.Class = characterForCreateDto.Class;
                 characterToCreate.PictureUrl = characterForCreateDto.PictureUrl;
                 characterToCreate.UserId = characterForCreateDto.UserId;
+                characterToCreate.ActiveDungeonId = 1;
+                characterToCreate.CharacterCounter = 1;
                 characterToCreate.Hp = 100;
                 characterToCreate.FastAttack = 10;
                 characterToCreate.StrongAttack = 15;
@@ -73,6 +74,8 @@ namespace DatingApp.API.Controllers
                 characterToCreate.Class = characterForCreateDto.Class;
                 characterToCreate.PictureUrl = characterForCreateDto.PictureUrl;
                 characterToCreate.UserId = characterForCreateDto.UserId;
+                characterToCreate.ActiveDungeonId = 1;
+                characterToCreate.CharacterCounter = 1;
                 characterToCreate.Hp = 100;
                 characterToCreate.FastAttack = 15;
                 characterToCreate.StrongAttack = 10;
@@ -98,6 +101,8 @@ namespace DatingApp.API.Controllers
                 characterToCreate.Class = characterForCreateDto.Class;
                 characterToCreate.PictureUrl = characterForCreateDto.PictureUrl;
                 characterToCreate.UserId = characterForCreateDto.UserId;
+                characterToCreate.ActiveDungeonId = 1;
+                characterToCreate.CharacterCounter = 1;
                 characterToCreate.Hp = 100;
                 characterToCreate.FastAttack = 10;
                 characterToCreate.StrongAttack = 10;
