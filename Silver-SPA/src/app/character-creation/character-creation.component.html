@@ -111,8 +111,10 @@
             <p>Mage talents focus on enhancing individual schools of magic – quick, aggressive Fire spells; efficient, controlling Frost spells and punishing Arcane spells.</p>
           </div>
         </div>
-        <button class="button" type="submit"><span>Accept</span></button>
-        <button class="button" [routerLink]="['/charselect']"><span>Back</span></button>
+        <div class="buttons">
+          <button id="accept" class="button" type="submit"><span>Accept</span></button>
+          <button id="back" class="button" [routerLink]="['/charselect']"><span>Back</span></button>
+        </div>
       </form>
     </div>
   </div>

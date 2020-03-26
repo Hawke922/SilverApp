@@ -14,7 +14,7 @@
     display: flex;
     width: 212px;
     height: 334px;
-    background: #232829;
+    background: var(--main-button-color);/*#232829*/
     box-shadow: 10px 5px 15px #111;
     color: #f1f1f1;
     border: 2px solid #000;
@@ -26,14 +26,34 @@
     user-select: none;
     transition: 0.3s;
     margin: 5px;
-    z-index: 1000;
+    overflow: hidden;
+}
+
+.new-character::before {
+    content: "+";
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000;
+    border-radius: 3px;
+    user-select: none;
+    top: 2;
+    width: 212px;
+    height: 334px;
+    background: #0f0f0f;
+    transition-property: opacity;
+    transition: 0.3s;
 }
 
 .new-character:hover {
-    background-color: #760604;
-    box-shadow: 0 0 0.2em #760604c5;
+    background: var(--main-button-color);
+    box-shadow: 0 0 30px var(--main-color);
     margin: 0 20px;
     transform: scale(1.1);
+}
+.new-character:hover::before {
+    opacity: 0;
 }
 
 .character {
@@ -49,7 +69,7 @@
 }
 
 img:hover {
-    box-shadow: 0 0 3em #760604c5;
+    box-shadow: 0 0 30px var(--main-color);
 }
 
 img {

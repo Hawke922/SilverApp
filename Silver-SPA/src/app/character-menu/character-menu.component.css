@@ -54,7 +54,7 @@
 
 .portrait {
   border: 2px solid #000;
-  border-radius: 3px;
+  border-radius: 2px;
   box-shadow: 0 0 8px #111;
 }
 
@@ -119,7 +119,7 @@
   display: grid;
   align-content: center;
   padding-top: 20px;
-  grid-template-columns: 160px 190px 140px;
+  grid-template-columns: 170px 180px 140px;
   border-top: 1px solid #000;
   height: 50px;
 }
@@ -128,7 +128,7 @@
   display: grid;
   align-content: center;
   padding-top: 20px;
-  grid-template-columns: 160px 190px 140px;
+  grid-template-columns: 170px 180px 140px;
   border-top: 1px solid #000;
   height: 50px;
 }
@@ -143,137 +143,82 @@
 }
 
 .strong-attack i, .strong-defense i {
-  background: linear-gradient(#800600, #470d0d);
+  background: var(--strong-icon-color);
   color: #dfdfdf;
   border: 2px solid #000;
   box-shadow: 0 0 4px #111;
 }
 
 .fast-attack i, .fast-defense i {
-  background: linear-gradient(#0a701b, #0c4705);
+  background: var(--fast-icon-color);
   color: #dfdfdf;
   border: 2px solid #000;
   box-shadow: 0 0 4px #111;
 }
 
 .special-attack i, .special-defense i {
-  background: linear-gradient(#362361, #250e3a);
+  background: var(--special-icon-color);
   color: #dfdfdf;
   border: 2px solid #000;
   box-shadow: 0 0 4px #111;
 }
 
 .health i, .crit i {
-  background: linear-gradient(#f5690c, #993304);
+  background: var(--passive-icon-color);
   color: #dfdfdf;
   border: 2px solid #000;
   border-radius: 50%;
   box-shadow: 0 0 4px #111;
 }
 
-#proceed {
+.buttons {
   grid-column: 1/3;
-  width: 250px;
-  height: 50px;
-  margin-bottom: 50px;
-  margin-top: 20px;
-  justify-self: center;
-  border: 2px solid #000;
-  box-shadow: 0 0 4px #111;
-  background: transparent;
-  color: #b3b3b3;
-  font-size: 20px;
-  font-weight: 500;
-  transform: skew(40deg);
-  overflow: hidden;
+  text-align: end;
 }
 
-#proceed::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -21px;
-  right: 0;
-  width: 290px;
-  height: 52px;
-  background: linear-gradient(to right, #0f0f0f,#1d1d1d,#070707);
-  transform: skew(-40deg);
-}
-
-#proceed span {
-  position: absolute;
-  top: 5px;
-  left: 0;
-  right: 0;
-  transform: skew(-40deg);
-}
-
-#proceed:focus {
-  outline:0;
-}
-
-#proceed:hover {
-  color: #fff;
-  border-bottom: 2px solid #333;
-  border-right: 2px solid #222;
-}
-
-#proceed:hover::before {
-  background: linear-gradient(to right, #0f0f0f,#222,#070707);
-}
-
-#proceed:focus {outline:0;}
-
-#back {
-  position: absolute;
-  top: 0px;
-  right: 50px;
-  width: 100px;
+button {
+  width: 115px;
   height: 35px;
-  margin: 45px 0px 45px 75px;
+  margin: 0 15px 50px 15px;
   border: 2px solid #000;
   box-shadow: 0 0 4px #111;
-  background: transparent;
-  transition: 0.2s;
+  background: var(--main-button-color);
   color: #b3b3b3;
   font-weight: bold;
-  transform: skew(40deg);
+  transition: 0.3s;
+  transform: skew(-40deg);
   overflow: hidden;
 }
 
-#back::before {
+button::before {
   content: "";
   position: absolute;
-  left: -14px;
+  left: -10px;
   right: 0;
   top: 0;
-  width: 120px;
+  width: 135px;
   height: 35px;
   background: linear-gradient(to right, #0f0f0f,#222,#070707);
-  transform: skew(-40deg);
+  transform: skew(40deg);
+  transition-property: opacity;
+  transition: 0.3s;
 }
 
-#back span {
+button:hover::before {
+  opacity: 0;
+}
+
+button span {
   position: absolute;
   top: 2px;
   left: 0;
   right: 0;
-  transform: skew(-40deg);
+  transform: skew(40deg);
 }
 
-#back:focus {
-  outline:0;
-}
-
-#back:hover {
+button:hover {
   color: #fff;
+  text-shadow: -1px 0 #000, 0 1px 4px #000, 1px 0 4px #000, 0 -1px #000;
+  box-shadow: 0 0 10px var(--main-color);
 }
-
-#back:focus {outline:0;}
-
-#jaj {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-}
+button:focus {outline:0;}

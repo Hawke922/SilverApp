@@ -50,7 +50,10 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="buttons">
+    <button id="accept" (click)="activateCharacter()" [routerLink]="['/dungmenu/', character.activeDungeonId]"><span>Travel</span></button>
+    <button id="customize"><span>Inventory</span></button>
     <button id="back" [routerLink]="['/charselect']"><span>Back</span></button>
   </div>
-  <button id="proceed" [routerLink]="['/dungmenu/', character.activeDungeonId]"><span>Proceed</span></button>
 </div>

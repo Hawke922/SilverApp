@@ -23,6 +23,7 @@ import { CharacterDetailResolver } from './_resolvers/character-detail.resolver'
 import { DungeonMenuComponent } from './dungeon-menu/dungeon-menu.component';
 import { DungeonMenuResolver } from './_resolvers/dungeon-menu.resolver';
 import { UserService } from './_services/user.service';
+import { CallbackPipe } from './_services/callback.pipe';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -38,7 +39,8 @@ export function tokenGetter() {
       LoginComponent,
       RegisterComponent,
       ProfileComponent,
-      DungeonMenuComponent
+      DungeonMenuComponent,
+      CallbackPipe
    ],
    imports: [
       BrowserModule,

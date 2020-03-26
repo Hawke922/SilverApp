@@ -6,6 +6,7 @@ namespace Silver.API.Dtos
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string CodeName { get; set; }
         public int Difficulty { get; set; }
         public string DescriptionLong { get; set; }
         public string DescriptionShort { get; set; }

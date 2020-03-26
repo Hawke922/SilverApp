@@ -26,4 +26,7 @@ export class CharacterMenuComponent implements OnInit, OnDestroy {
     document.body.classList.remove('bg-gradient');
   }
 
+  activateCharacter() {
+    this.userService.setActiveCharacter(this.activeCharacter);
+  }
 }

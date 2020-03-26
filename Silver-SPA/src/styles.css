@@ -3,6 +3,16 @@
 @import '../node_modules/rpg-awesome/css/rpg-awesome.css';
 @import "~bootstrap/dist/css/bootstrap.css";
 
+:root {
+  --main-color: #571901;
+  --main-button-color: linear-gradient(#0f0f0f, #571901);
+  --strong-icon-color: linear-gradient(#5a0c0c, #0c0000); /*690a05*/
+  --fast-icon-color: linear-gradient(#0c4207, #011405); /*095817*/
+  --special-icon-color: linear-gradient(#300357, #0d0114); /*3e0166*/
+  --passive-icon-color: linear-gradient(#7e4a06, #140901);
+
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -26,3 +36,11 @@ body, html {
   background-size: cover;
   background-attachment: fixed;
 }
+
+.bg-old-road {
+  background-image: url("assets/bg/forestCropped.png");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+
