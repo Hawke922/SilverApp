@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Silver.API.Models
 {
     public class Character
@@ -30,5 +32,6 @@ namespace Silver.API.Models
         public int ActiveDungeonId { get; set; }
         public User User { get; set; }
         public int UserId { get; set; }
+        public virtual ICollection<AbilityCharacter> AbilityCharacters { get; set; }
     }
 }

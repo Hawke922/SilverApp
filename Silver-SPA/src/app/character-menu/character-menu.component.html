@@ -18,7 +18,10 @@
     <div class="stats">
       <h3>Offensive Abilities:</h3>
       <div class="offense">
-        <div class="strong-attack" ngbTooltip="Strong Attack Power: {{ character.strongAttack }}" tooltipClass="tooltip">
+        <div *ngFor="let ability of character.abilities | callback: filterOffensiveAbility" class="attack-ability" ngbTooltip="Attack Power: {{ ability.baseDamage }}" tooltipClass="tooltip">
+          <i class="ra {{ ability.icon }} ra-lg"></i><span>{{ ability.name }}</span>
+        </div>
+        <!-- <div class="strong-attack" ngbTooltip="Strong Attack Power: {{ character.strongAttack }}" tooltipClass="tooltip">
           <i class="ra {{ character.strongAttAbilityIcon }} ra-lg"></i><span>{{ character.strongAttAbility }}</span>
         </div>
         <div class="fast-attack" ngbTooltip="Fast Attack Power: {{ character.fastAttack }}" tooltipClass="tooltip">
@@ -26,11 +29,14 @@
         </div>
         <div class="special-attack" ngbTooltip="Special Attack Power: {{ character.specialAttack }}" tooltipClass="tooltip">
           <i class="ra {{ character.specialAttAbilityIcon }} ra-lg"></i><span>{{ character.specialAttAbility }}</span>
-        </div>
+        </div> -->
       </div>
       <h3>Defensive Abilities:</h3>
       <div class="defense">
-        <div class="strong-defense" ngbTooltip="Strong Defense Raiting: {{ character.strongDefense }}" tooltipClass="tooltip">
+        <div *ngFor="let ability of character.abilities | callback: filterDefensiveAbility" class="defense-ability" ngbTooltip="Defensive Power: {{ ability.baseDamage }}" tooltipClass="tooltip">
+          <i class="ra {{ ability.icon }} ra-lg"></i><span>{{ ability.name }}</span>
+        </div>
+        <!-- <div class="strong-defense" ngbTooltip="Strong Defense Raiting: {{ character.strongDefense }}" tooltipClass="tooltip">
           <i class="ra {{ character.strongDefAbilityIcon }} ra-lg"></i><span>{{ character.strongDefAbility }}</span>
         </div>
         <div class="fast-defense" ngbTooltip="Fast Defense Raiting: {{ character.fastDefense }}" tooltipClass="tooltip">
@@ -38,7 +44,7 @@
         </div>
         <div class="special-defense" ngbTooltip="Special Defense Raiting: {{ character.specialDefense }}" tooltipClass="tooltip">
           <i class="ra {{ character.specialDefAbilityIcon }} ra-lg"></i><span>{{ character.specialDefAbility }}</span>
-        </div>
+        </div> -->
       </div>
       <h3>Passives:</h3>
       <div class="passive">

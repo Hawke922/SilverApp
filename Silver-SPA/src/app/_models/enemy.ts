@@ -1,3 +1,5 @@
+import { Ability } from './ability';
+
 export interface Enemy {
     id: number;
     name: string;
@@ -12,18 +14,7 @@ export interface Enemy {
     fastDefense: number;
     strongDefense: number;
     specialDefense: number;
-    fastAttAbility: string;
-    strongAttAbility: string;
-    specialAttAbility: string;
-    fastDefAbility: string;
-    strongDefAbility: string;
-    specialDefAbility: string;
-    fastAttAbilityIcon: string;
-    strongAttAbilityIcon: string;
-    specialAttAbilityIcon: string;
-    fastDefAbilityIcon: string;
-    strongDefAbilityIcon: string;
-    specialDefAbilityIcon: string;
+    abilities: Ability[];
     isBoss: boolean;
     dungeonId: number;
 }

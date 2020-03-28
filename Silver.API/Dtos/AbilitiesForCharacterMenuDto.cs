@@ -1,8 +1,6 @@
-using System.Collections.Generic;
-
-namespace Silver.API.Models
+namespace Silver.API.Dtos
 {
-    public class Ability
+    public class AbilitiesForCharacterMenuDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -11,8 +9,5 @@ namespace Silver.API.Models
         public int BaseDamage { get; set; }
         public int TypeId { get; set; }
         public bool IsOffensive { get; set; }
-        public Type Type { get; set; }
-        public ICollection<AbilityCharacter> AbilityCharacters { get; set; }
-        
     }
 }

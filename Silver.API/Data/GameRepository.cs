@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Silver.API.Models;
@@ -38,7 +39,10 @@ namespace Silver.API.Data
 
         public async Task<Character> GetCharacter(int id)
         {
-            var character = await _context.Characters.Include(p => p.User).FirstOrDefaultAsync(u => u.Id == id);
+            // var character = await _context.Characters.Include(p => p.User).FirstOrDefaultAsync(u => u.Id == id);
+            var character = await _context.Characters.Include(p => p.AbilityCharacters).ThenInclude(p => p.Ability).FirstOrDefaultAsync(c => c.Id == id);
+            // IList<AbilityCharacter> abilities = await _context.AbilityCharacters.Include(ability => ability.Ability).Where(ac => ac.CharacterId == id).ToListAsync();
+            // List<AbilityCharacter> abilities = _context.AbilityCharacters.Include(ability => ability.Ability).Where(ac => ac.CharacterId ==id).ToList();
 
             return character;
         }

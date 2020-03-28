@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -26,7 +28,6 @@ namespace DatingApp.API.Controllers
         public async Task<IActionResult> GetCharacter(int id)
         {
             var character = await _repo.GetCharacter(id);
-            
             var characterToReturn = _mapper.Map<CharacterForMenuDto>(character);
 
             return Ok(characterToReturn);
@@ -57,18 +58,29 @@ namespace DatingApp.API.Controllers
                 characterToCreate.StrongDefense = 1;
                 characterToCreate.SpecialDefense = 0;
                 characterToCreate.ClassIcon = "ra-axe";
-                characterToCreate.FastAttAbility = "Piercing Strike";
-                characterToCreate.StrongAttAbility = "Decapitate";
-                characterToCreate.SpecialAttAbility = "Grappling Hook";
-                characterToCreate.fastDefAbility = "Heavy Armor";
-                characterToCreate.StrongDefAbility = "Shield Wall";
-                characterToCreate.SpecialDefAbility = "Ignore Pain";
-                characterToCreate.FastAttAbilityIcon = "ra-drill";
-                characterToCreate.StrongAttAbilityIcon = "ra-decapitation";
-                characterToCreate.SpecialAttAbilityIcon = "ra-grappling-hook";
-                characterToCreate.fastDefAbilityIcon = "ra-knight-helmet";
-                characterToCreate.StrongDefAbilityIcon = "ra-castle-flag";
-                characterToCreate.SpecialDefAbilityIcon = "ra-player-pyromaniac";
+                // characterToCreate.FastAttAbility = "Piercing Strike";
+                // characterToCreate.StrongAttAbility = "Decapitate";
+                // characterToCreate.SpecialAttAbility = "Grappling Hook";
+                // characterToCreate.fastDefAbility = "Heavy Armor";
+                // characterToCreate.StrongDefAbility = "Shield Wall";
+                // characterToCreate.SpecialDefAbility = "Ignore Pain";
+                // characterToCreate.FastAttAbilityIcon = "ra-drill";
+                // characterToCreate.StrongAttAbilityIcon = "ra-decapitation";
+                // characterToCreate.SpecialAttAbilityIcon = "ra-grappling-hook";
+                // characterToCreate.fastDefAbilityIcon = "ra-knight-helmet";
+                // characterToCreate.StrongDefAbilityIcon = "ra-castle-flag";
+                // characterToCreate.SpecialDefAbilityIcon = "ra-player-pyromaniac";
+                int[] warriorAbilities = {1, 2, 3, 10, 11, 12};
+                characterToCreate.AbilityCharacters = new Collection<AbilityCharacter> {};
+                foreach (var ability in warriorAbilities) {
+                    characterToCreate.AbilityCharacters.Add (
+                        new AbilityCharacter {
+                            AbilityId = ability,
+                            Character = characterToCreate
+                        }
+                    );
+                }
+                
             } else if (characterForCreateDto.Class == "rogue") {
                 characterToCreate.Name = characterForCreateDto.Name;
                 characterToCreate.Class = characterForCreateDto.Class;
@@ -84,18 +96,29 @@ namespace DatingApp.API.Controllers
                 characterToCreate.StrongDefense = 0;
                 characterToCreate.SpecialDefense = 2;
                 characterToCreate.ClassIcon = "ra-plain-dagger";
-                characterToCreate.FastAttAbility = "Knife Throw";
-                characterToCreate.StrongAttAbility = "Ambush";
-                characterToCreate.SpecialAttAbility = "Trap";
-                characterToCreate.fastDefAbility = "Adrenaline Rush";
-                characterToCreate.StrongDefAbility = "Dodge";
-                characterToCreate.SpecialDefAbility = "Vanish";
-                characterToCreate.FastAttAbilityIcon = "ra-kunai";
-                characterToCreate.StrongAttAbilityIcon = "ra-blade-bite";
-                characterToCreate.SpecialAttAbilityIcon = "ra-bear-trap";
-                characterToCreate.fastDefAbilityIcon = "ra-defibrillate";
-                characterToCreate.StrongDefAbilityIcon = "ra-player-dodge";
-                characterToCreate.SpecialDefAbilityIcon = "ra-nuclear";
+                // characterToCreate.FastAttAbility = "Knife Throw";
+                // characterToCreate.StrongAttAbility = "Ambush";
+                // characterToCreate.SpecialAttAbility = "Trap";
+                // characterToCreate.fastDefAbility = "Adrenaline Rush";
+                // characterToCreate.StrongDefAbility = "Dodge";
+                // characterToCreate.SpecialDefAbility = "Vanish";
+                // characterToCreate.FastAttAbilityIcon = "ra-kunai";
+                // characterToCreate.StrongAttAbilityIcon = "ra-blade-bite";
+                // characterToCreate.SpecialAttAbilityIcon = "ra-bear-trap";
+                // characterToCreate.fastDefAbilityIcon = "ra-defibrillate";
+                // characterToCreate.StrongDefAbilityIcon = "ra-player-dodge";
+                // characterToCreate.SpecialDefAbilityIcon = "ra-nuclear";
+                int[] rogueAbilities = {4, 5, 6, 13, 14, 15};
+                characterToCreate.AbilityCharacters = new Collection<AbilityCharacter> {};
+                foreach (var ability in rogueAbilities) {
+                    characterToCreate.AbilityCharacters.Add (
+                        new AbilityCharacter {
+                            AbilityId = ability,
+                            Character = characterToCreate
+                        }
+                    );
+                }
+                
             } else {
                 characterToCreate.Name = characterForCreateDto.Name;
                 characterToCreate.Class = characterForCreateDto.Class;
@@ -111,18 +134,29 @@ namespace DatingApp.API.Controllers
                 characterToCreate.StrongDefense = 2;
                 characterToCreate.SpecialDefense = 1;
                 characterToCreate.ClassIcon = "ra-crystal-wand";
-                characterToCreate.FastAttAbility = "Lightning Bolt";
-                characterToCreate.StrongAttAbility = "Inferno";
-                characterToCreate.SpecialAttAbility = "Freeze";
-                characterToCreate.fastDefAbility = "Divert";
-                characterToCreate.StrongDefAbility = "Flame Shield";
-                characterToCreate.SpecialDefAbility = "Barrier";
-                characterToCreate.FastAttAbilityIcon = "ra-focused-lightning";
-                characterToCreate.StrongAttAbilityIcon = "ra-burning-meteor";
-                characterToCreate.SpecialAttAbilityIcon = "ra-frost-emblem";
-                characterToCreate.fastDefAbilityIcon = "ra-divert";
-                characterToCreate.StrongDefAbilityIcon = "ra-burning-book";
-                characterToCreate.SpecialDefAbilityIcon = "ra-barrier";
+                // characterToCreate.FastAttAbility = "Lightning Bolt";
+                // characterToCreate.StrongAttAbility = "Inferno";
+                // characterToCreate.SpecialAttAbility = "Freeze";
+                // characterToCreate.fastDefAbility = "Divert";
+                // characterToCreate.StrongDefAbility = "Flame Shield";
+                // characterToCreate.SpecialDefAbility = "Barrier";
+                // characterToCreate.FastAttAbilityIcon = "ra-focused-lightning";
+                // characterToCreate.StrongAttAbilityIcon = "ra-burning-meteor";
+                // characterToCreate.SpecialAttAbilityIcon = "ra-frost-emblem";
+                // characterToCreate.fastDefAbilityIcon = "ra-divert";
+                // characterToCreate.StrongDefAbilityIcon = "ra-burning-book";
+                // characterToCreate.SpecialDefAbilityIcon = "ra-barrier";                
+                int[] mageAbilities = {7, 8, 9, 16, 17, 18};
+                characterToCreate.AbilityCharacters = new Collection<AbilityCharacter> {};
+                foreach (var ability in mageAbilities) {
+                    characterToCreate.AbilityCharacters.Add (
+                        new AbilityCharacter {
+                            AbilityId = ability,
+                            Character = characterToCreate
+                        }
+                    );
+                }
+                
             }
 
             var createdCharacter = await _repo.CreateCharacter(characterToCreate);
