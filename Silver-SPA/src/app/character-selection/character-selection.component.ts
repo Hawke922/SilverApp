@@ -10,12 +10,12 @@ import { UserService } from '../_services/user.service';
 })
 export class CharacterSelectionComponent implements OnInit, OnDestroy {
   user: User;
-  activeCharacter: number;
+  model: any = {};
+  error;
 
   constructor(private router: Router, private route: ActivatedRoute, public userService: UserService) { }
 
   ngOnInit() {
-    this.userService.activeCharacter.subscribe(characterId => this.activeCharacter = characterId);
     this.route.data.subscribe(data => {
       this.user = data['user'];
     });
@@ -27,6 +27,13 @@ export class CharacterSelectionComponent implements OnInit, OnDestroy {
   }
 
   activateCharacter(characterId) {
-    this.userService.setActiveCharacter(characterId);
+    this.model.CharacterId = characterId;
+    this.model.UserId = this.user.id;
+    this.userService.selectCharacter(this.model).subscribe(() => {
+      this.router.navigate(['/charselect/', characterId]);
+    }, error => {
+      this.error = error;
+      console.log(error);
+    });
   }
 }

@@ -46,6 +46,7 @@ namespace Silver.API.Data
 
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
+            user.ActiveCharacterId = 0;
 
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();

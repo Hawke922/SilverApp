@@ -6,6 +6,7 @@ namespace Silver.API.Dtos
     {
         public int Id { get; set; }
         public string Username { get; set; }
+        public int ActiveCharacterId { get; set; }
         public ICollection<CharacterDto> Characters { get; set; }
     }
 }

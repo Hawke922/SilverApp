@@ -23,6 +23,10 @@ export class UserService {
     return this.http.get<Character>(this.baseUrl + 'characters/' + id);
   }
 
+  selectCharacter(model: any): Observable<Character> {
+    return this.http.patch<Character>(this.baseUrl + 'characters/select', model);
+  }
+
   createCharacter(model: any) {
     return this.http.post(this.baseUrl + 'characters/create', model);
   }

@@ -24,6 +24,18 @@ namespace DatingApp.API.Controllers
             _repo = repo;
         }
 
+        [HttpPatch("select")]
+        public async Task<IActionResult> SelectCharacter(CharacterSelectionDto characterSelectionDto)
+        {
+            var character = await _repo.GetCharacter(characterSelectionDto.CharacterId);
+            var user = await _repo.GetUser(characterSelectionDto.UserId);
+            user.ActiveCharacterId = characterSelectionDto.CharacterId;
+            await _repo.SaveAll();
+            var characterToReturn = _mapper.Map<CharacterForMenuDto>(character);
+
+            return Ok(characterToReturn);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCharacter(int id)
         {

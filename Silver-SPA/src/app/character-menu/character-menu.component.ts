@@ -11,7 +11,7 @@ import { Ability } from '../_models/ability';
 })
 export class CharacterMenuComponent implements OnInit, OnDestroy {
   character: Character;
-  activeCharacter: number;
+  // activeCharacter: number;
   filterOffensiveAbility = (ability: Ability) => {
     return ability.isOffensive;
   }
@@ -23,7 +23,7 @@ export class CharacterMenuComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute, public userService: UserService) {}
 
   ngOnInit() {
-    this.userService.activeCharacter.subscribe(characterId => this.activeCharacter = characterId);
+    // this.userService.activeCharacter.subscribe(characterId => this.activeCharacter = characterId);
     this.route.data.subscribe(data => {
       this.character = data['character'];
     });
@@ -32,9 +32,5 @@ export class CharacterMenuComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     document.body.classList.remove('bg-gradient');
-  }
-
-  activateCharacter() {
-    this.userService.setActiveCharacter(this.activeCharacter);
   }
 }

@@ -1,12 +1,12 @@
 <div class="dungeon-menu">
   <div class="dungeon-menu-header">
-    <h1>{{ dungeon.name }}</h1>
+    <h1>{{ data.dungeon.name }}</h1>
   </div>
   <div class="dungeon-info">
     <h2>Location Knowledge</h2>
     <h3>Possible Enemy Encounters:</h3>
     <div class="enemies">
-      <div class="enemy" *ngFor="let enemy of dungeon.enemies | callback: filterEnemy" placement="bottom" ngbTooltip="{{ enemy.name }} - not encountered yet">
+      <div class="enemy" *ngFor="let enemy of data.dungeon.enemies | callback: filterEnemy" placement="bottom" ngbTooltip="{{ enemy.name }} - not encountered yet">
         <img src="{{ enemy.thumbnailUrl }}" alt="">
       </div>
     </div>
@@ -16,11 +16,11 @@
   </div>
   <div class="dungeon-description-wrapper">
     <div class="div-dugeon-description">
-      {{ dungeon.descriptionLong }}
+      {{ data.dungeon.descriptionLong }}
     </div>
   </div>
   <div class="buttons">
     <button id="embark"><span>Embark</span></button>
-    <button id="back" [routerLink]="['/charselect/']"><span>Back</span></button>
+    <button id="back" [routerLink]="['/charselect/', data.user.activeCharacterId]"><span>Back</span></button>
   </div>
 </div>
