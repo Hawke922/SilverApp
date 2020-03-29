@@ -56,7 +56,7 @@ namespace Silver.API.Data
 
         public async Task<Enemy> GetEnemy(int id)
         {
-            var enemy = await _context.Enemies.Include(p => p.Dungeon).FirstOrDefaultAsync(u => u.Id == id);
+            var enemy = await _context.Enemies.Include(p => p.EnemyAbilities).ThenInclude(p => p.Ability).FirstOrDefaultAsync(e => e.Id == id);
 
             return enemy;
         }      

@@ -12,11 +12,13 @@ namespace Silver.API.Data
         public DbSet<Enemy> Enemies { get; set; }
         public DbSet<Ability> Abilities { get; set; }
         public DbSet<AbilityCharacter> AbilityCharacters { get; set; }
+        public DbSet<EnemyAbility> EnemyAbilities { get; set; }
         public DbSet<Type> Types { get; set; }
 
         // Making pairings of primary keys unique
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.Entity<AbilityCharacter>().HasKey(ac => new { ac.AbilityId, ac.CharacterId });
+            modelBuilder.Entity<EnemyAbility>().HasKey(ac => new { ac.EnemyId, ac.AbilityId });
         }
     }
 

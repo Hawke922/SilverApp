@@ -13,6 +13,7 @@ namespace Silver.API.Models
         public bool IsOffensive { get; set; }
         public Type Type { get; set; }
         public ICollection<AbilityCharacter> AbilityCharacters { get; set; }
+        public ICollection<EnemyAbility> EnemyAbilities { get; set; }
         
     }
 }

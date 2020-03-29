@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Silver.API.Models
 {
     public class Enemy
@@ -30,5 +32,6 @@ namespace Silver.API.Models
         public bool IsBoss { get; set; }
         public Dungeon Dungeon { get; set; }
         public int DungeonId { get; set; }
+        public ICollection<EnemyAbility> EnemyAbilities { get; set; }
     }
 }

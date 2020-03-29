@@ -1,4 +1,4 @@
-using Silver.API.Models;
+using System.Collections.Generic;
 
 namespace Silver.API.Dtos
 {
@@ -12,5 +12,6 @@ namespace Silver.API.Dtos
         public string DescriptionShort { get; set; }
         public bool IsBoss { get; set; }
         public int DungeonId { get; set; }
+        public ICollection<AbilitiesForCharacterMenuDto> Abilities { get; set; }
     }
 }

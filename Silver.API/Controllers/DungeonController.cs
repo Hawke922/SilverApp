@@ -29,5 +29,15 @@ namespace Silver.API.Controllers
 
             return Ok(dungeonToReturn);
         }
+
+        [HttpGet("enemy/{id}")]
+        public async Task<IActionResult> GetEnemy(int id)
+        {
+            var enemy = await _repo.GetEnemy(id);
+            
+            var enemyToReturn = _mapper.Map<EnemyForDungeonMenu>(enemy);
+
+            return Ok(enemyToReturn);
+        }
     }
 }

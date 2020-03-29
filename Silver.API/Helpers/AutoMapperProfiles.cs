@@ -11,9 +11,9 @@ namespace Silver.API.Helpers
         {
             CreateMap<User, UserForMenusDto>();
             CreateMap<Character, CharacterDto>();
-            CreateMap<Character, CharacterForMenuDto>().ForMember(dto => dto.Abilities, opt => opt.MapFrom(x => x.AbilityCharacters.Select(y => y.Ability)));
+            CreateMap<Character, CharacterForMenuDto>().ForMember(dto => dto.Abilities, opt => opt.MapFrom(x => x.AbilityCharacters.Select(y => y.Ability)));            
+            CreateMap<Enemy, EnemyForDungeonMenu>().ForMember(dto => dto.Abilities, opt => opt.MapFrom(x => x.EnemyAbilities.Select(y => y.Ability)));
             CreateMap<Dungeon, DungeonForMenuDto>();
-            CreateMap<Enemy, EnemyForDungeonMenu>();
             CreateMap<Ability, AbilitiesForCharacterMenuDto>();
         }
     }
