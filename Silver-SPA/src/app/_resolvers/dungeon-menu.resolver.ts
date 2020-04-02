@@ -12,7 +12,7 @@ export class DungeonMenuResolver implements Resolve<Dungeon> {
     constructor(private dungeonService: DungeonService, private userService: UserService, private authService: AuthService, private router: Router) {}
 
     resolve(route: ActivatedRouteSnapshot): Observable<any> {
-        const jankoBaci = forkJoin({
+        const data = forkJoin({
             user: this.userService.getUser(this.authService.decodedToken.nameid),
             dungeon: this.dungeonService.getDungeon(+route.params['id']).pipe(catchError( error => {
                 console.log('Problem retrieving dungeon data');
@@ -20,7 +20,7 @@ export class DungeonMenuResolver implements Resolve<Dungeon> {
                 this.router.navigate(['/charselect']);
                 return of(null);
             }))});
-        return jankoBaci;
+        return data;
         }
 
     // resolve(route: ActivatedRouteSnapshot): Observable<Dungeon> {

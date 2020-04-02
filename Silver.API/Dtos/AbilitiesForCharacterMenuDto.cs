@@ -1,5 +1,6 @@
 namespace Silver.API.Dtos
 {
+    // Abilities for action
     public class AbilitiesForCharacterMenuDto
     {
         public int Id { get; set; }

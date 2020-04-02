@@ -1,0 +1,107 @@
+<div class="combat">
+  <div class="character">
+    <img src="{{ data.character.pictureUrl }}" alt="" srcset="">
+    <div class="hp-bar-bg">
+      <span class="hp-bar" [style.width.%]="heroHealthBarValue"></span>
+    </div>
+  </div>
+  <div class="enemy">
+    <img src="{{ data.enemy.pictureUrl }}" alt="" srcset="">
+    <div class="hp-bar-bg">
+      <span class="hp-bar" [style.width.%]="enemyHealthBarValue"></span>
+    </div>
+  </div>
+  <div class="merger">
+    <div class="merger-header">
+      <h2>Exchange Strategy</h2>
+    </div>
+    <!-- <i class="ra ra-lightning-sword ra-5x" id="offense-merger"></i> -->
+    <!-- <i class="ra ra-sword ra-5x" id="offense-merger"></i> -->
+    <!-- <i class="ra ra-relic-blade ra-5x" id="offense-merger"></i> -->
+    <i class="ra ra-crossed-swords ra-5x" id="offense-merger"></i>
+    <!-- <i class="ra ra-crossed-axes ra-5x" id="offense-merger"></i> -->
+    <div class="picked-offense">
+      <i *ngIf="offense" class="ra {{ offense.icon }} ra-lg" (click)="unPickOffense()"></i>
+    </div>
+    <i class="ra ra-round-shield ra-5x" id="defense-merger"></i>
+    <!-- <i class="ra ra-shield ra-5x" id="defense-merger"></i> -->
+    <div class="picked-defense"> 
+      <i *ngIf="defense" class="ra {{ defense.icon }} ra-lg" (click)="unPickDefense()"></i>
+    </div>
+    <button [disabled]="!offensePicked || !defensePicked" (click)="endTurn()" class="end-turn"><span>End Turn</span></button>
+  </div>
+  <div class="phases">
+    <div *ngIf="heroPhase" class="hero-phase">{{ data.character.name | titlecase }} Turn</div>
+    <div *ngIf="enemyPhase" class="enemy-phase">{{ data.enemy.name | titlecase }}'s Turn</div>
+    <div *ngIf="victory" class="enemy-phase">Victory</div>
+    <div *ngIf="defeat" class="enemy-phase">Defeat</div>
+  </div>
+  <div class="control-panel">
+    <div class="character-panel">
+      <div class="character-header">
+        <i class="ra {{ data.character.classIcon }} ra-lg"></i><span>{{ data.character.name | titlecase }}</span><br>
+        <span id="hp">Hp: {{this.heroHealth}} / {{data.character.hp}}</span>
+      </div>
+      <div class="abilities">
+        <div class="offense">
+          <i class="ra ra-crossed-swords" id="sword"></i>
+          <div *ngFor="let ability of data.character.abilities | callback: filterOffensiveAbility" 
+          class="{{ ability.description }}" 
+          ngbTooltip="{{ ability.name }}" 
+          tooltipClass="tooltip" 
+          (click)="strategyPhase && pickOffense(ability)">
+            <i class="ra {{ ability.icon }} ra-lg"></i>
+          </div>
+        </div>
+        <div class="defense">
+          <i class="ra ra-round-shield" id="shield"></i>
+          <div *ngFor="let ability of data.character.abilities | callback: filterDefensiveAbility" 
+          class="{{ ability.description }}" 
+          ngbTooltip="{{ ability.name }}" 
+          tooltipClass="tooltip" 
+          (click)="strategyPhase && pickDefense(ability)">
+            <i class="ra {{ ability.icon }} ra-lg"></i>
+          </div>
+        </div>
+      </div>
+      <div class="character-stats">
+        <div class="character-stats-offense">
+          <table>
+            <tr>
+              <td>Might</td>
+              <td>{{ data.character.strongAttack }}</td>
+            </tr>
+            <tr>
+              <td>Agility</td>
+              <td>{{ data.character.fastAttack }}</td>
+            </tr>
+            <tr>
+              <td>Intellect</td>
+              <td>{{ data.character.specialAttack }}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="character-stats-defense">
+          <table>
+            <tr>
+              <td>Constitution</td>
+              <td>{{ data.character.strongDefense }}</td>
+            </tr>
+            <tr>
+              <td>Reflex</td>
+              <td>{{ data.character.fastDefense }}</td>
+            </tr>
+            <tr>
+              <td>Willpower</td>
+              <td>{{ data.character.specialDefense }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="enemy-panel">
+      <p>Enemy hp: {{ this.enemyHealth }}</p>
+    </div>
+  </div>
+  <button class="batn" [routerLink]="['/dungmenu/', data.character.activeDungeonId]"><span>Back</span></button>
+</div>

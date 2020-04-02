@@ -4,8 +4,12 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
 :root {
-  --main-color: #571901;
-  --main-button-color: linear-gradient(#0f0f0f, #571901);
+  --main-color: #8E0E00;
+  --main-background: linear-gradient(35deg, #383737c4, #292626c7 100%);
+  --solid-background: #222;
+  --text-shadow: -1px 0 #000, 0 1px 4px #000, 1px 0 4px #000, 0 -1px #000;
+  --main-button-color: linear-gradient(#190A05, #870000); /*linear-gradient(#0f0f0f, #571901)*/
+  --main-button-before-background: linear-gradient(to right, #0f0f0f,#222,#070707);
   --strong-icon-color: linear-gradient(#5a0c0c, #0c0000); /*690a05*/
   --fast-icon-color: linear-gradient(#0c4207, #011405); /*095817*/
   --special-icon-color: linear-gradient(#300357, #0d0114); /*3e0166*/
@@ -39,6 +43,12 @@ body, html {
 
 .bg-old-road {
   background-image: url("assets/bg/forestCropped.png");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.bg-duel {
+  background-image: url("assets/bg/duel-new.jpg");
   background-size: cover;
   background-attachment: fixed;
 }

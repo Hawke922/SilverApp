@@ -115,7 +115,7 @@
   border: 1px solid #000;
   border-radius: 2px;
   box-shadow: 0 0 8px #111;
-  background-color: #222;
+  background-color: var(--solid-background);
 }
 
 .dungeon-description-wrapper::after {
@@ -125,7 +125,7 @@
   right: 55px;
   width: 335px;
   height: 330px;
-  background: linear-gradient(transparent 1%, #222 8%);
+  background: linear-gradient(transparent 1%, var(--solid-background) 8%);
   animation: 5s linear 1 scroll;
   animation-fill-mode: forwards;
 }

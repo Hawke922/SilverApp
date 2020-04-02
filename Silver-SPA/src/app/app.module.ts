@@ -24,6 +24,9 @@ import { DungeonMenuComponent } from './dungeon-menu/dungeon-menu.component';
 import { DungeonMenuResolver } from './_resolvers/dungeon-menu.resolver';
 import { UserService } from './_services/user.service';
 import { CallbackPipe } from './_services/callback.pipe';
+import { CombatComponent } from './combat/combat.component';
+import { CombatResolver } from './_resolvers/combat.resolver';
+import { DungeonService } from './_services/dungeon.service';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -40,7 +43,8 @@ export function tokenGetter() {
       RegisterComponent,
       ProfileComponent,
       DungeonMenuComponent,
-      CallbackPipe
+      CallbackPipe,
+      CombatComponent
    ],
    imports: [
       BrowserModule,
@@ -63,7 +67,9 @@ export function tokenGetter() {
       CharacterSelectionResolver,
       CharacterDetailResolver,
       DungeonMenuResolver,
-      UserService
+      UserService,
+      CombatResolver,
+      DungeonService
    ],
    bootstrap: [
       AppComponent

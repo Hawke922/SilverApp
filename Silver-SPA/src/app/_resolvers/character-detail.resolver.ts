@@ -11,7 +11,7 @@ export class CharacterDetailResolver implements Resolve<Character> {
 
     resolve(route: ActivatedRouteSnapshot): Observable<Character> {
         return this.userService.getCharacter(route.params['id']).pipe(catchError( error => {
-            console.log('Problem retrieving character data')
+            console.log('Problem retrieving character data');
             this.router.navigate(['/charselect']);
             return of(null);
         }));

@@ -1,8 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Dungeon } from '../_models/dungeon';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Enemy } from '../_models/enemy';
-import { UserService } from '../_services/user.service';
 import { User } from '../_models/user';
 
 @Component({
@@ -18,7 +17,7 @@ export class DungeonMenuComponent implements OnInit, OnDestroy {
     return !enemy.isBoss;
   }
 
-  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
