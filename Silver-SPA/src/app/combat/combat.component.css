@@ -108,13 +108,15 @@
     border: 2px solid #000;
     border-radius: 3px;
     background: var(--main-background);
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin: 0 75px;
 }
 
 .character-panel {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
-    width: 600px;
 }
 
 .character-header {

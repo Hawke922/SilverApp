@@ -12,6 +12,7 @@ import { DungeonMenuComponent } from './dungeon-menu/dungeon-menu.component';
 import { DungeonMenuResolver } from './_resolvers/dungeon-menu.resolver';
 import { CombatComponent } from './combat/combat.component';
 import { CombatResolver } from './_resolvers/combat.resolver';
+import { EncounterCombatComponent } from './encounters/encounter-combat/encounter-combat.component';
 
 export const appRoutes: Routes = [
     { path: 'landing', component: LandingComponent, data: { animation: 'isLeft' }},
@@ -21,6 +22,7 @@ export const appRoutes: Routes = [
     { path: 'charselect/:id', component: CharacterMenuComponent, canActivate: [AuthGuard], resolve: { character: CharacterDetailResolver }},
     { path: 'dungmenu/:id', component: DungeonMenuComponent, canActivate: [AuthGuard], resolve: { dungeon: DungeonMenuResolver }},
     { path: 'combat/:id', component: CombatComponent, resolve: { character: CombatResolver }},
+    { path: 'combat-new/:id', component: EncounterCombatComponent , resolve: { character: CombatResolver }},
     { path: 'charcreate', component: CharacterCreationComponent, canActivate: [AuthGuard]},
     { path: '**', redirectTo: 'login', pathMatch: 'full'}
 ];

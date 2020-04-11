@@ -17,7 +17,8 @@ export class CombatResolver implements Resolve<Character> {
                 console.log('Problem retrieving character data');
                 this.router.navigate(['/charselect']);
                 return of(null);
-            }))});
+            }))
+        });
         return data;
         }
 

@@ -27,6 +27,13 @@ import { CallbackPipe } from './_services/callback.pipe';
 import { CombatComponent } from './combat/combat.component';
 import { CombatResolver } from './_resolvers/combat.resolver';
 import { DungeonService } from './_services/dungeon.service';
+import { EncounterCombatComponent } from './encounters/encounter-combat/encounter-combat.component';
+import { CombatPanelComponent } from './encounters/encounter-combat/combat-panel/combat-panel.component';
+import { ControlPanelComponent } from './encounters/encounter-combat/control-panel/control-panel.component';
+import { EnemyComponent } from './encounters/encounter-combat/combat-panel/enemy/enemy.component';
+import { HeroComponent } from './encounters/encounter-combat/combat-panel/hero/hero.component';
+import { MergerComponent } from './encounters/encounter-combat/combat-panel/merger/merger.component';
+import { CombatService } from './_services/combat.service';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -44,7 +51,14 @@ export function tokenGetter() {
       ProfileComponent,
       DungeonMenuComponent,
       CallbackPipe,
-      CombatComponent
+      CombatComponent,
+      EncounterCombatComponent,
+      CombatPanelComponent,
+      ControlPanelComponent,
+      EnemyComponent,
+      HeroComponent,
+      MergerComponent
+      
    ],
    imports: [
       BrowserModule,
@@ -69,7 +83,8 @@ export function tokenGetter() {
       DungeonMenuResolver,
       UserService,
       CombatResolver,
-      DungeonService
+      DungeonService,
+      CombatService
    ],
    bootstrap: [
       AppComponent

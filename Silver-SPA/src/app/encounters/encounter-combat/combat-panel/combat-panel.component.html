@@ -1,0 +1,16 @@
+<div class="left"></div>
+<app-hero></app-hero>
+<app-merger></app-merger>
+<app-enemy></app-enemy>
+<div class="right"></div>
+<div class="phases" *ngIf ="combatData.battlePhase || combatData.strategyPhase || combatData.combatComplete">
+  <div *ngIf="combatData.battlePhase" class="box">
+    <span class="content">Battle Phase</span>
+  </div>
+  <div *ngIf="combatData.strategyPhase" class="box">
+    <span class="content">Strategy Phase</span>
+  </div>
+  <div *ngIf="combatData.combatComplete" class="box">
+    <span class="content">Victory / Defeat</span>
+  </div>
+</div>

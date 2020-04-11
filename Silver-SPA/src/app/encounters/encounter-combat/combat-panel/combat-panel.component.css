@@ -1,0 +1,122 @@
+:host {
+    display: grid;
+    grid-template-columns: 1fr 270px 420px 270px 1fr;
+    align-self: end;
+}
+
+.phases {
+    position: absolute;
+    top: 200px;
+    left: 300px;
+    z-index: 3;
+    transform: skew(40deg);
+    animation: slide 2.5s ease-in-out;
+}
+
+.box {
+    position: relative;
+    color: #f1f1f1;
+    font-size: 37px;
+    font-weight: 600;
+    text-shadow: var(--text-shadow);
+    width: 400px;
+    height: 60px;
+    background: #1a1a1a;
+    box-shadow: inset 0 0px 20px  #000000;
+}
+
+.content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    transform: skew(-40deg);
+}
+
+.box::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    z-index: -1;
+    filter: blur(10px);
+    background: linear-gradient(235deg, var(--main-color), transparent,  var(--main-color));
+    animation: glow-one 2.5s linear;
+}
+
+.box::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: -1;
+    filter: blur(20px);
+    background: var(--main-color);
+    animation: glow-two 2.5s linear;
+}
+
+@keyframes glow-one {
+    0% {
+        filter: blur(0);
+    }
+    10% {
+        filter: blur(6px);
+    }
+    30% {
+        filter: blur(8px);
+    }
+    50% {
+        filter: blur(6px);
+    }
+    70% {
+        filter: blur(8px);
+    }
+    100% {
+        filter: blur(0);
+    }
+}
+@keyframes glow-two {
+    0% {
+        filter: blur(0);
+    }
+    10% {
+        filter: blur(15px);
+    }
+    30% {
+        filter: blur(10px);
+    }
+    50% {
+        filter: blur(10px);
+    }
+    70% {
+        filter: blur(15px);
+    }
+    100% {
+        filter: blur(0);
+    }
+}
+
+@keyframes slide {
+    0% {
+        left: 0;
+        opacity: 0;
+    }
+    15% {
+        left: 300px;
+        opacity: 1;
+    }
+    85% {
+        left: 300px;
+        opacity: 1;
+    }
+    93% {
+        opacity: 0;
+    }
+    100% {
+        left: 600px;
+        opacity: 0;
+    }
+}

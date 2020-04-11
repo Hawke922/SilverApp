@@ -21,6 +21,7 @@
   </div>
   <div class="buttons">
     <button id="embark" [routerLink]="['/combat/', data.user.activeCharacterId]"  [queryParams]="{ dung: 1 }"><span>Explore</span></button>
+    <button id="embark" [routerLink]="['/combat-new/', data.user.activeCharacterId]"  [queryParams]="{ dung: 1 }"><span>UNCHARTED</span></button>
     <button id="back" [routerLink]="['/charselect/', data.user.activeCharacterId]"><span>Back</span></button>
   </div>
 </div>

@@ -15,20 +15,15 @@
     <div class="merger-header">
       <h2>Exchange Strategy</h2>
     </div>
-    <!-- <i class="ra ra-lightning-sword ra-5x" id="offense-merger"></i> -->
-    <!-- <i class="ra ra-sword ra-5x" id="offense-merger"></i> -->
-    <!-- <i class="ra ra-relic-blade ra-5x" id="offense-merger"></i> -->
     <i class="ra ra-crossed-swords ra-5x" id="offense-merger"></i>
-    <!-- <i class="ra ra-crossed-axes ra-5x" id="offense-merger"></i> -->
     <div class="picked-offense">
       <i *ngIf="offense" class="ra {{ offense.icon }} ra-lg" (click)="unPickOffense()"></i>
     </div>
     <i class="ra ra-round-shield ra-5x" id="defense-merger"></i>
-    <!-- <i class="ra ra-shield ra-5x" id="defense-merger"></i> -->
     <div class="picked-defense"> 
       <i *ngIf="defense" class="ra {{ defense.icon }} ra-lg" (click)="unPickDefense()"></i>
     </div>
-    <button [disabled]="!offensePicked || !defensePicked" (click)="endTurn()" class="end-turn"><span>End Turn</span></button>
+    <button [disabled]="offense == null || defense == null" (click)="endTurn()" class="end-turn"><span>End Turn</span></button>
   </div>
   <div class="phases">
     <div *ngIf="heroPhase" class="hero-phase">{{ data.character.name | titlecase }} Turn</div>

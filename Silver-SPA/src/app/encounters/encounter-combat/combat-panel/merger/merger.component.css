@@ -1,0 +1,121 @@
+.merger {
+    position: relative;
+    grid-column: 2/3;
+    height: 334px;
+    width: 320px;
+    margin: 0px 50px;
+    border: 2px solid #000;
+    border-radius: 3px;
+    background: linear-gradient(227deg, #333, #222);
+    background-size: 400% 400%;
+    box-shadow: inset 0 0px 20px #111, 0 0 8px #000;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    overflow: hidden;
+    text-shadow: var(--text-shadow);
+    color: #dfdfdf;
+    animation: ambient 15s ease infinite;
+}
+
+.merger-header, .end-turn {
+    grid-column: 1/3;
+}
+
+.picked-offense, .picked-defense {
+    width: 75px;
+    height: 75px;
+    margin: 40px;
+    background: var(--solid-background);
+    box-shadow: inset 0 0px 20px  #0000007e, 0 0 8px #111;
+    border: 2px solid #000;
+    border-radius: 3px;
+    font-size: 40px;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.picked-offense {
+    justify-self: right;
+}
+
+.picked-defense {
+    justify-self: left;
+}
+
+#offense-merger, #defense-merger {
+    position: absolute;
+    opacity: 0.2;
+    transform: scale(2.3);
+    z-index: 1;
+}
+
+#offense-merger {
+    left: 25px;
+}
+
+#defense-merger {
+    left: 210px;
+}
+
+button {
+    width: 115px;   
+    height: 35px;
+    border: 2px solid #000;
+    box-shadow: 0 0 4px #111;
+    background: var(--main-button-color);
+    color: #b3b3b3;
+    text-shadow: var(--text-shadow);
+    font-weight: 500;
+    transition: 0.3s;
+    transform: skew(-40deg);
+    overflow: hidden;
+}
+  
+button::before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    right: 0;
+    top: 0;
+    width: 135px;
+    height: 35px;
+    background: var(--main-button-before-background);
+    transform: skew(40deg);
+    transition-property: opacity;
+    transition: 0.3s;
+}
+  
+button:hover::before {
+    opacity: 0;
+}
+  
+button span {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    right: 0;
+    transform: skew(40deg);
+}
+  
+button:hover {
+    color: #fff;
+    text-shadow: var(--text-shadow);
+    box-shadow: 0 0 10px var(--main-color);
+}
+
+button:focus {outline:0;}
+
+button:disabled{
+    opacity: 30%;
+    pointer-events: none;
+}
+
+@keyframes ambient {
+    0%{background-position:0% 55%}
+    50%{background-position:100% 46%}
+    100%{background-position:0% 55%}
+}

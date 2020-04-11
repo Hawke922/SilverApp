@@ -1,0 +1,66 @@
+<div class="character-panel">
+  <div class="character-header">
+    <i id="classIcon" class="ra {{ data.character.classIcon }} ra-lg"></i>
+    <span id="name">{{ data.character.name | titlecase }}</span>
+    <span class="hp"><i id="healthIcon" class="ra ra-hearts ra-lg"></i>{{ combatData.hero.health }} / {{ data.character.hp }}</span>
+  </div>
+  <div class="abilities">
+    <div *ngFor="let ability of data.character.abilities | callback: filterOffensiveAbility" 
+    class="{{ ability.description }}" 
+    ngbTooltip="{{ ability.name }}" 
+    tooltipClass="tooltip" 
+    (click)="combatData.abilityPicking && pickOffense(ability)">
+      <i class="ra {{ ability.icon }} ra-lg"></i>
+    </div>
+    <div *ngFor="let ability of data.character.abilities | callback: filterDefensiveAbility" 
+    class="{{ ability.description }}" 
+    ngbTooltip="{{ ability.name }}" 
+    tooltipClass="tooltip" 
+    (click)="combatData.abilityPicking && pickDefense(ability)">
+      <i class="ra {{ ability.icon }} ra-lg"></i>
+    </div>
+  </div>
+  <div class="buttons">
+    <button class="enemy"><span>Enemy</span></button>
+    <button class="inventory"><span>Inventory</span></button>
+    <button class="log"><span>Combat Log</span></button>
+    <button class="retreat" [routerLink]="['/dungmenu/', data.character.activeDungeonId]"><span>Retreat</span></button>
+  </div>
+  <div class="character-stats">
+    <div class="character-stats-offense">
+      <table>
+        <tr>
+          <td>Might</td>
+          <td>{{ data.character.strongAttack }}</td>
+        </tr>
+        <tr>
+          <td>Agility</td>
+          <td>{{ data.character.fastAttack }}</td>
+        </tr>
+        <tr>
+          <td>Intellect</td>
+          <td>{{ data.character.specialAttack }}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="character-stats-defense">
+      <table>
+        <tr>
+          <td>Constitution</td>
+          <td>{{ data.character.strongDefense }}</td>
+        </tr>
+        <tr>
+          <td>Reflex</td>
+          <td>{{ data.character.fastDefense }}</td>
+        </tr>
+        <tr>
+          <td>Willpower</td>
+          <td>{{ data.character.specialDefense }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="enemy-panel">
+  <p>Enemy hp: {{ combatData.enemy.health }}</p>
+</div>

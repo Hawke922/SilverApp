@@ -15,8 +15,6 @@ export class CombatComponent implements OnInit, OnDestroy {
   character: Character;
   offense: Ability;
   defense: Ability;
-  offensePicked = false;
-  defensePicked = false;
   enemyOffense: Ability;
   enemyDefense: Ability;
   heroDamage: number;
@@ -32,7 +30,7 @@ export class CombatComponent implements OnInit, OnDestroy {
   victory = false;
   defeat = false;
 
-  constructor(private route: ActivatedRoute, public router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   filterOffensiveAbility = (ability: Ability) => {
     return ability.isOffensive;
@@ -57,22 +55,18 @@ export class CombatComponent implements OnInit, OnDestroy {
 
   pickOffense(ability) {
     this.offense = ability;
-    this.offensePicked = true;
   }
 
   pickDefense(ability) {
     this.defense = ability;
-    this.defensePicked = true;
   }
 
   unPickOffense() {
     this.offense = null;
-    this.offensePicked = false;
   }
 
   unPickDefense() {
     this.defense = null;
-    this.defensePicked = false;
   }
 
   enemyPick() {
@@ -89,6 +83,8 @@ export class CombatComponent implements OnInit, OnDestroy {
     // defense - will pick according to hero attack last turn, need to implement buffer for last actions
 
     // offense - enemy can have ultimate ability on cooldown, will use it when it goes off
+
+    // crit chance calculated by "main" stat of character/enemy
   }
 
   abilityLog(ability) {

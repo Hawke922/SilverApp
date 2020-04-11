@@ -10,8 +10,11 @@
   --text-shadow: -1px 0 #000, 0 1px 4px #000, 1px 0 4px #000, 0 -1px #000;
   --main-button-color: linear-gradient(#190A05, #870000); /*linear-gradient(#0f0f0f, #571901)*/
   --main-button-before-background: linear-gradient(to right, #0f0f0f,#222,#070707);
+  --strong-color: #b30000;
   --strong-icon-color: linear-gradient(#5a0c0c, #0c0000); /*690a05*/
+  --fast-color: #127a08;
   --fast-icon-color: linear-gradient(#0c4207, #011405); /*095817*/
+  --special-color: #4d0091;
   --special-icon-color: linear-gradient(#300357, #0d0114); /*3e0166*/
   --passive-icon-color: linear-gradient(#7e4a06, #140901);
 
