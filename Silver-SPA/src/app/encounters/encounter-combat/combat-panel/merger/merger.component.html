@@ -1,14 +1,18 @@
-<div class="merger">
+<div [@mergerFade] *ngIf="combatData.abilityPicking" class="merger">
   <div class="merger-header">
-    <h2>Exchange Strategy</h2>
+    <i class="fa fa-caret-right"></i>
+    <h2>Prepare Strategy</h2>
   </div>
-  <i class="ra ra-crossed-swords ra-5x" id="offense-merger"></i>
-  <div class="picked-offense">
-    <i *ngIf="combatData.hero.offense" class="ra {{ combatData.hero.offense.icon }} ra-lg" (click)="dropOffense()"></i>
+  <i class="ra ra-crossed-swords ra-5x" id="sword-icon" *ngIf="combatData.abilityPicking"></i>
+  <div [@abilityFade] class="picked-offense" *ngIf="combatData.hero.offense && combatData.abilityPicking" id="{{ combatData.hero.offense.description }}" (click)="dropOffense()">
+    <i *ngIf="combatData.hero.offense" class="ra {{ combatData.hero.offense.icon }} ra-lg" id ="offense"></i>
   </div>
-  <i class="ra ra-round-shield ra-5x" id="defense-merger"></i>
-  <div class="picked-defense"> 
-    <i *ngIf="combatData.hero.defense" class="ra {{ combatData.hero.defense.icon }} ra-lg" (click)="dropDefense()"></i>
+  <i class="ra ra-round-shield ra-5x" id="shield-icon" *ngIf="combatData.abilityPicking"></i>
+  <div [@abilityFade] class="picked-defense" *ngIf="combatData.hero.defense && combatData.abilityPicking" id="{{ combatData.hero.defense.description }}" (click)="dropDefense()"> 
+    <i *ngIf="combatData.hero.defense" class="ra {{ combatData.hero.defense.icon }} ra-lg" id ="defense"></i>
   </div>
-  <button [disabled]="combatData.hero.offense == null || combatData.hero.defense == null" (click)="endTurn()" class="end-turn"><span>End Turn</span></button>
+  <button *ngIf="combatData.abilityPicking" [disabled]="combatData.hero.offense == null || combatData.hero.defense == null" (click)="endTurn()" class="end-turn">
+    <i class="ra ra-lightning-sword ra-lg"></i>
+    <span>Fight!</span>
+  </button>
 </div>

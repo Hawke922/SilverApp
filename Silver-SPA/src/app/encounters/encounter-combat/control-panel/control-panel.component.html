@@ -7,15 +7,17 @@
   <div class="abilities">
     <div *ngFor="let ability of data.character.abilities | callback: filterOffensiveAbility" 
     class="{{ ability.description }}" 
-    ngbTooltip="{{ ability.name }}" 
+    ngbTooltip="{{ ability.name }} : Offensive Ability" 
     tooltipClass="tooltip" 
+    [openDelay]="2000"
     (click)="combatData.abilityPicking && pickOffense(ability)">
       <i class="ra {{ ability.icon }} ra-lg"></i>
     </div>
     <div *ngFor="let ability of data.character.abilities | callback: filterDefensiveAbility" 
     class="{{ ability.description }}" 
-    ngbTooltip="{{ ability.name }}" 
+    ngbTooltip="{{ ability.name }} : Defensive Ability" 
     tooltipClass="tooltip" 
+    [openDelay]="2000"
     (click)="combatData.abilityPicking && pickDefense(ability)">
       <i class="ra {{ ability.icon }} ra-lg"></i>
     </div>

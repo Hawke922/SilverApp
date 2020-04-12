@@ -58,7 +58,6 @@ export function tokenGetter() {
       EnemyComponent,
       HeroComponent,
       MergerComponent
-      
    ],
    imports: [
       BrowserModule,

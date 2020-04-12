@@ -1,5 +1,6 @@
 <div class="enemy">
   <img src="{{ data.enemy.pictureUrl }}" alt="" srcset="">
+  <div *ngIf="combatData.enemy.damageUpdate" class="damage">-{{ combatData.hero.damage }} (<i class="ra ra-shield"></i>{{ combatData.enemy.blockedDamage }})</div>
   <div class="hp-bar-bg">
     <span class="hp-bar" [style.width.%]="combatData.enemy.healthBarValue"></span>
 </div>

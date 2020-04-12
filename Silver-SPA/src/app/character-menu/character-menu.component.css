@@ -116,15 +116,17 @@
   text-shadow: none;
 }
 .offense {
+  position: relative;
   display: grid;
-  align-content: center;
-  padding-top: 20px;
+  align-self: center;
+  padding-top: 10px;
   grid-template-columns: 170px 180px 140px;
   border-top: 1px solid #000;
   height: 50px;
 }
 
 .defense {
+  position: relative;
   display: grid;
   align-content: center;
   padding-top: 20px;
@@ -142,25 +144,25 @@
   height: 50px;
 }
 
-.strong-attack i, .strong-defense i {
+.strong, .fast, .special {
+  color: #dfdfdf;
+  border: 2px solid #000;
+  border-radius: 3px;
+  box-shadow: 0 0 4px #111, inset 0 0px 10px  #00000060;
+  width: 50px;
+  height: 50px;
+}
+
+.strong {
   background: var(--strong-icon-color);
-  color: #dfdfdf;
-  border: 2px solid #000;
-  box-shadow: 0 0 4px #111;
 }
 
-.fast-attack i, .fast-defense i {
+.fast {
   background: var(--fast-icon-color);
-  color: #dfdfdf;
-  border: 2px solid #000;
-  box-shadow: 0 0 4px #111;
 }
 
-.special-attack i, .special-defense i {
+.special {
   background: var(--special-icon-color);
-  color: #dfdfdf;
-  border: 2px solid #000;
-  box-shadow: 0 0 4px #111;
 }
 
 .health i, .crit i {

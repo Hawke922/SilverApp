@@ -8,4 +8,5 @@ export class CombatantData {
         healthBarValue?: number;
         trueDamage?: number;
         blockedDamage?: number;
+        damageUpdate?: boolean;
 }

@@ -1,11 +1,26 @@
 .hero {
     width: 270px;
+    position: relative;
+    display: grid;
 }
 
 .hero img{
+    justify-self: center;
     border: 2px solid #000;
     border-radius: 3px;
     box-shadow: 0 0 8px #111;
+}
+
+.damage {
+    position: absolute;
+    justify-self: center;
+    top: 20%;
+    color: #a81900;
+    text-shadow: var(--text-shadow);
+    font-size: 25px;
+    font-weight: 700;
+    animation: damage 2s linear;
+    opacity: 0;
 }
 
 .hp-bar-bg { 
@@ -33,4 +48,23 @@
     position: relative;
     overflow: hidden;
     transition: 0.5s;
+}
+
+@keyframes damage {
+    0% {
+        transform: translateY(0px);
+    }
+
+    10% {
+        transform: translateY(10px);
+        opacity: 1;
+    }
+
+    80% {
+        transform: translateY(80px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100px);
+    }
 }

@@ -11,12 +11,16 @@
   --main-button-color: linear-gradient(#190A05, #870000); /*linear-gradient(#0f0f0f, #571901)*/
   --main-button-before-background: linear-gradient(to right, #0f0f0f,#222,#070707);
   --strong-color: #b30000;
-  --strong-icon-color: linear-gradient(#5a0c0c, #0c0000); /*690a05*/
+  --strong-icon-color: linear-gradient(#5a0c0c, #0c0000);
+  --strong-icon-color-reverse: linear-gradient(#0c0000, #5a0c0c ); /*690a05*/
   --fast-color: #127a08;
   --fast-icon-color: linear-gradient(#0c4207, #011405); /*095817*/
+  --fast-icon-color-reverse: linear-gradient(#011405, #0c4207); /*095817*/
   --special-color: #4d0091;
+  --special-icon-color-reverse: linear-gradient(#0d0114, #300357); /*3e0166*/
   --special-icon-color: linear-gradient(#300357, #0d0114); /*3e0166*/
   --passive-icon-color: linear-gradient(#7e4a06, #140901);
+  --defeat: linear-gradient(#460909, #0c0000 75%);
 
 }
 

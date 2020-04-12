@@ -4,13 +4,22 @@
 <app-enemy></app-enemy>
 <div class="right"></div>
 <div class="phases" *ngIf ="combatData.battlePhase || combatData.strategyPhase || combatData.combatComplete">
-  <div *ngIf="combatData.battlePhase" class="box">
+  <div *ngIf="combatData.battlePhase" class="phase">
     <span class="content">Battle Phase</span>
   </div>
-  <div *ngIf="combatData.strategyPhase" class="box">
+  <div *ngIf="combatData.strategyPhase" class="phase">
     <span class="content">Strategy Phase</span>
   </div>
-  <div *ngIf="combatData.combatComplete" class="box">
-    <span class="content">Victory / Defeat</span>
+</div>
+<div class="game-finishers">
+  <div [@fade] *ngIf="combatData.victory" class="victory">
+    <img src="{{ data.character.pictureUrl }}" alt="" srcset="">
+    <span>Victory</span>
+  </div>
+  <div [@fade] *ngIf="combatData.defeat" class="game-over">
+    <img src="{{ data.character.pictureUrl }}" alt="" srcset="">
+    <img src="{{ data.character.pictureUrl }}" alt="" srcset="">
+    <img src="{{ data.character.pictureUrl }}" alt="" srcset="">
+    <span>Defeat</span>
   </div>
 </div>

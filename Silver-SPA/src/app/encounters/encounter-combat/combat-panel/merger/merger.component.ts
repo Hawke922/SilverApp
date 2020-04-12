@@ -2,13 +2,48 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CombatService } from 'src/app/_services/combat.service';
 import { CombatData } from 'src/app/_models/combat-data';
 import { Router } from '@angular/router';
+import { trigger, state, style, animate, transition, keyframes } from '@angular/animations';
 
 @Component({
   selector: 'app-merger',
   templateUrl: './merger.component.html',
-  styleUrls: ['./merger.component.css']
+  styleUrls: ['./merger.component.css'],
+  animations: [
+    trigger(
+      'abilityFade',  [
+        transition (
+          ':enter', [
+            style ({ height: 0, opacity: 0 }),
+            animate('200ms ease-out', style ({ height: 125, opacity: 1 }))
+          ]
+        ),
+        transition (
+          ':leave', [
+            style ({ height: 125, opacity: 1 }),
+            animate ('200ms ease-in', style ({ height: 0, opacity: 0 }))
+          ]
+        )
+      ]
+    ),
+    trigger(
+      'mergerFade',  [
+        transition (
+          ':enter', [
+            style ({ height: 0, opacity: 0 }),
+            animate('300ms ease-out', style ({ height: 365, opacity: 1 }))
+          ]
+        ),
+        transition (
+          ':leave', [
+            style ({ height: 365, opacity: 1 }),
+            animate ('300ms ease-in', style ({ height: 0, opacity: 0 }))
+          ]
+        )
+      ]
+    )
+  ]
 })
-export class MergerComponent implements OnInit, AfterViewInit {
+export class MergerComponent implements OnInit {
 
   data: any;
   combatData: CombatData;
@@ -18,9 +53,6 @@ export class MergerComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.combatService.data.subscribe(data => this.data = data);
     this.combatService.combatData.subscribe(combatData => this.combatData = combatData);
-  }
-
-  ngAfterViewInit() {
   }
 
   dropOffense() {
@@ -50,15 +82,25 @@ export class MergerComponent implements OnInit, AfterViewInit {
     defender.blockedDamage = attacker.trueDamage - attacker.damage;
     defender.health -= attacker.damage;
     defender.healthBarValue = cs.percentage(defenderData.hp, defender.health);
+    defender.damageUpdate = true;
+    setTimeout(() => {
+      defender.damageUpdate = false;
+  }, 2000);
 
-    if (Math.sign(defender.healthBarValue) === -1 || 0 || -0) {
-      defender.healthBarValue = 0;
+    if (Math.sign(defender.health) === -1 || 0 || -0) {
       defender.health = 0;
+      defender.healthBarValue = 0;
       this.combatData.combatComplete = true;
-      setTimeout(() => {
-        this.router.navigate(['/dungmenu/', this.data.character.activeDungeonId]);
-    }, 3000);
+      console.log(defender);
+      console.log(this.data.character);
+      if (this.combatData.hero.health === 0) {
+        this.combatData.defeat = true;
+      } else {
+        this.combatData.victory = true;
+      }
+      return true;
     }
+    return false;
   }
 
   endTurn() {
@@ -72,41 +114,46 @@ export class MergerComponent implements OnInit, AfterViewInit {
     if (this.data.character.fastAttack >= this.data.enemy.fastAttack) {
 
       setTimeout(() => {
-
-        this.processTurn(this.combatData.hero, this.data.character, this.combatData.enemy, this.data.enemy);
-
-        setTimeout(() => {
-
-          this.processTurn(this.combatData.enemy, this.data.enemy, this.combatData.hero, this.data.character);
-
-          this.combatData.strategyPhase = true;
+        if (this.processTurn(this.combatData.hero, this.data.character, this.combatData.enemy, this.data.enemy)) {
           setTimeout(() => {
-            this.combatData.strategyPhase = false;
-            this.combatData.abilityPicking = true;
-            this.combatData.hero.offense = null;
-            this.combatData.hero.defense = null;
-          }, 2500);
+            this.router.navigate(['/dungmenu/', this.data.character.activeDungeonId]);
+          }, 5000);
+        } else {
+        setTimeout(() => {
+          if (this.processTurn(this.combatData.enemy, this.data.enemy, this.combatData.hero, this.data.character)) {
+            setTimeout(() => {
+              this.router.navigate(['/dungmenu/', this.data.character.activeDungeonId]);
+            }, 5000);
+          } else {
+            setTimeout(() => {
+              this.finishBattle();
             }, 3000);
+          }
+            }, 3000);
+          }
       }, 3000);
 
     } else {
 
       setTimeout(() => {
 
-        this.processTurn(this.combatData.enemy, this.data.enemy, this.combatData.hero, this.data.character);
-
-        setTimeout(() => {
-
-          this.processTurn(this.combatData.hero, this.data.character, this.combatData.enemy, this.data.enemy);
-
-          this.combatData.strategyPhase = true;
+        if (this.processTurn(this.combatData.enemy, this.data.enemy, this.combatData.hero, this.data.character)) {
           setTimeout(() => {
-            this.combatData.strategyPhase = false;
-            this.combatData.abilityPicking = true;
-            this.combatData.hero.offense = null;
-            this.combatData.hero.defense = null;
-          }, 2500);
+            this.router.navigate(['/dungmenu/', this.data.character.activeDungeonId]);
+          }, 5000);
+        } else {
+          setTimeout(() => {
+            if (this.processTurn(this.combatData.hero, this.data.character, this.combatData.enemy, this.data.enemy)) {
+              setTimeout(() => {
+                this.router.navigate(['/dungmenu/', this.data.character.activeDungeonId]);
+            }, 5000);
+          } else {
+            setTimeout(() => {
+              this.finishBattle();
             }, 3000);
+          }
+            }, 3000);
+          }
       }, 3000);
     }
   }
@@ -122,4 +169,25 @@ export class MergerComponent implements OnInit, AfterViewInit {
 
     this.combatData.enemy.defense = this.data.enemy.abilities[2];
   }
+
+  finishBattle() {
+
+    this.combatData.strategyPhase = true;
+
+    setTimeout(() => {
+
+      this.combatData.strategyPhase = false;
+
+      this.combatData.abilityPicking = true;
+
+      this.combatData.hero.offense = null;
+      this.combatData.hero.defense = null;
+    }, 2500);
+  }
+
+  return() {
+  }
 }
+
+
+
