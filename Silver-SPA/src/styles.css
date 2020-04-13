@@ -37,7 +37,7 @@ body, html {
 }
 
 .bg-skull {
-  background-image: url("https://imgur.com/WFHKg2S.png");
+  background-image: url("assets/bg/skull.jpg");
   background-size: cover;
   background-attachment: fixed;
 }

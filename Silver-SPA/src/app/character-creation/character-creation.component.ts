@@ -22,30 +22,30 @@ export class CharacterCreationComponent implements AfterViewInit, OnInit, OnDest
   pickedClass;
   pickedPortrait;
   malePortraits = [
-    'https://imgur.com/3Cy9L2p.png',
-    'https://imgur.com/guRbjN3.png',
-    'https://imgur.com/bSelfTL.png',
-    'https://imgur.com/ovlki5V.png',
-    'https://imgur.com/s7fXZfl.png',
-    'https://imgur.com/ozt9xfI.png',
-    'https://imgur.com/iUoW3uw.png',
-    'https://imgur.com/M98UCzl.png',
-    'https://imgur.com/lo7Igj0.png',
-    'https://imgur.com/RNFVq4T.png',
-    'https://imgur.com/IFc0SF4.png',
-    'https://imgur.com/COzLQS2.png'
+    'assets/portraits/male1.png',
+    'assets/portraits/male2.png',
+    'assets/portraits/male3.png',
+    'assets/portraits/male4.png',
+    'assets/portraits/male5.png',
+    'assets/portraits/male6.png',
+    'assets/portraits/male7.png',
+    'assets/portraits/male8.png',
+    'assets/portraits/male9.png',
+    'assets/portraits/male10.png',
+    'assets/portraits/male11.png',
+    'assets/portraits/male12.png'
    ];
    femalePortraits = [
-    'https://imgur.com/DkVAodO.png',
-    'https://imgur.com/CQygYqi.png',
-    'https://imgur.com/K4OxOWa.png',
-    'https://imgur.com/gIZEGxA.png',
-    'https://imgur.com/qswBfCf.png',
-    'https://imgur.com/alLON2o.png',
-    'https://imgur.com/8GcaM6Q.png',
-    'https://imgur.com/SBMXYie.png',
-    'https://imgur.com/x6TFLIa.png',
-    'https://imgur.com/YmOvfYe.png'
+    'assets/portraits/female1.png',
+    'assets/portraits/female2.png',
+    'assets/portraits/female3.png',
+    'assets/portraits/female4.png',
+    'assets/portraits/female5.png',
+    'assets/portraits/female6.png',
+    'assets/portraits/female7.png',
+    'assets/portraits/female8.png',
+    'assets/portraits/female9.png',
+    'assets/portraits/female10.png'
   ];
 
   constructor(config: NgbCarouselConfig, private router: Router, private userService: UserService, private authService: AuthService) {
@@ -124,9 +124,9 @@ export class CharacterCreationComponent implements AfterViewInit, OnInit, OnDest
       this.pickedClass = 'mage';
     }
     if (this.malePicked) {
-    this.pickedPortrait = 'https://imgur.com/3Cy9L2p.png';
+    this.pickedPortrait = 'assets/portraits/male1.png';
     } else {
-    this.pickedPortrait = 'https://imgur.com/DkVAodO.png';
+    this.pickedPortrait = 'assets/portraits/female1.png';
     }
     this.model = {
     name: pickedName,
