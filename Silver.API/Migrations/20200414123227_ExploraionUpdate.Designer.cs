@@ -9,8 +9,8 @@ using Silver.API.Data;
 namespace Silver.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200327160130_AbilityOverhaul")]
-    partial class AbilityOverhaul
+    [Migration("20200414123227_ExploraionUpdate")]
+    partial class ExploraionUpdate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,6 +32,9 @@ namespace Silver.API.Migrations
 
                     b.Property<string>("Icon")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsOffensive")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
@@ -61,6 +64,65 @@ namespace Silver.API.Migrations
                     b.ToTable("AbilityCharacters");
                 });
 
+            modelBuilder.Entity("Silver.API.Models.Area", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CodeName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("DungeonId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ExploreMax")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ThumbnailUrl")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UnlockOn")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DungeonId");
+
+                    b.ToTable("Areas");
+                });
+
+            modelBuilder.Entity("Silver.API.Models.AreaProgress", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("AreaId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("DungeonId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Explored")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ProgressId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProgressId");
+
+                    b.ToTable("AreaProgress");
+                });
+
             modelBuilder.Entity("Silver.API.Models.Character", b =>
                 {
                     b.Property<int>("Id")
@@ -70,19 +132,10 @@ namespace Silver.API.Migrations
                     b.Property<int>("ActiveDungeonId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CharacterCounter")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Class")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ClassIcon")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("FastAttAbility")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("FastAttAbilityIcon")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("FastAttack")
@@ -100,50 +153,23 @@ namespace Silver.API.Migrations
                     b.Property<string>("PictureUrl")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("SpecialAttAbility")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("SpecialAttAbilityIcon")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("SpecialAttack")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("SpecialDefAbility")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("SpecialDefAbilityIcon")
-                        .HasColumnType("TEXT");
 
                     b.Property<int>("SpecialDefense")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("StrongAttAbility")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("StrongAttAbilityIcon")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("StrongAttack")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("StrongDefAbility")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("StrongDefAbilityIcon")
-                        .HasColumnType("TEXT");
 
                     b.Property<int>("StrongDefense")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("ThumbnailUrl")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("UserId")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("fastDefAbility")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("fastDefAbilityIcon")
-                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -173,15 +199,43 @@ namespace Silver.API.Migrations
                     b.Property<int>("Difficulty")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("ExploreMax")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ThumbnailUrl")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("UnlockOn")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
                     b.ToTable("Dungeons");
+                });
+
+            modelBuilder.Entity("Silver.API.Models.DungeonProgress", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("DungeonId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Explored")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ProgressId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProgressId");
+
+                    b.ToTable("DungeonProgress");
                 });
 
             modelBuilder.Entity("Silver.API.Models.Enemy", b =>
@@ -190,20 +244,14 @@ namespace Silver.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("DescriptionLong")
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("AreaId")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<string>("DescriptionShort")
+                    b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("DungeonId")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("FastAttAbility")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("FastAttAbilityIcon")
-                        .HasColumnType("TEXT");
 
                     b.Property<int>("FastAttack")
                         .HasColumnType("INTEGER");
@@ -223,38 +271,14 @@ namespace Silver.API.Migrations
                     b.Property<string>("PictureUrl")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("SpecialAttAbility")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("SpecialAttAbilityIcon")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("SpecialAttack")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("SpecialDefAbility")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("SpecialDefAbilityIcon")
-                        .HasColumnType("TEXT");
 
                     b.Property<int>("SpecialDefense")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("StrongAttAbility")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("StrongAttAbilityIcon")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("StrongAttack")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("StrongDefAbility")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("StrongDefAbilityIcon")
-                        .HasColumnType("TEXT");
 
                     b.Property<int>("StrongDefense")
                         .HasColumnType("INTEGER");
@@ -262,17 +286,45 @@ namespace Silver.API.Migrations
                     b.Property<string>("ThumbnailUrl")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("fastDefAbility")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("fastDefAbilityIcon")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("AreaId");
 
                     b.HasIndex("DungeonId");
 
                     b.ToTable("Enemies");
+                });
+
+            modelBuilder.Entity("Silver.API.Models.EnemyAbility", b =>
+                {
+                    b.Property<int>("EnemyId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("AbilityId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("EnemyId", "AbilityId");
+
+                    b.HasIndex("AbilityId");
+
+                    b.ToTable("EnemyAbilities");
+                });
+
+            modelBuilder.Entity("Silver.API.Models.Progress", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CharacterId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CharacterId")
+                        .IsUnique();
+
+                    b.ToTable("Progress");
                 });
 
             modelBuilder.Entity("Silver.API.Models.Type", b =>
@@ -296,6 +348,9 @@ namespace Silver.API.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ActiveCharacterId")
                         .HasColumnType("INTEGER");
 
                     b.Property<byte[]>("PasswordHash")
@@ -336,6 +391,24 @@ namespace Silver.API.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Silver.API.Models.Area", b =>
+                {
+                    b.HasOne("Silver.API.Models.Dungeon", "Dungeon")
+                        .WithMany("Areas")
+                        .HasForeignKey("DungeonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Silver.API.Models.AreaProgress", b =>
+                {
+                    b.HasOne("Silver.API.Models.Progress", "Progress")
+                        .WithMany("AreaProgress")
+                        .HasForeignKey("ProgressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Silver.API.Models.Character", b =>
                 {
                     b.HasOne("Silver.API.Models.User", "User")
@@ -345,11 +418,48 @@ namespace Silver.API.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Silver.API.Models.DungeonProgress", b =>
+                {
+                    b.HasOne("Silver.API.Models.Progress", "Progress")
+                        .WithMany("DungeonProgress")
+                        .HasForeignKey("ProgressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Silver.API.Models.Enemy", b =>
                 {
+                    b.HasOne("Silver.API.Models.Area", null)
+                        .WithMany("Enemies")
+                        .HasForeignKey("AreaId");
+
                     b.HasOne("Silver.API.Models.Dungeon", "Dungeon")
                         .WithMany("Enemies")
                         .HasForeignKey("DungeonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Silver.API.Models.EnemyAbility", b =>
+                {
+                    b.HasOne("Silver.API.Models.Ability", "Ability")
+                        .WithMany("EnemyAbilities")
+                        .HasForeignKey("AbilityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Silver.API.Models.Enemy", "Enemy")
+                        .WithMany("EnemyAbilities")
+                        .HasForeignKey("EnemyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Silver.API.Models.Progress", b =>
+                {
+                    b.HasOne("Silver.API.Models.Character", "Character")
+                        .WithOne("Progress")
+                        .HasForeignKey("Silver.API.Models.Progress", "CharacterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

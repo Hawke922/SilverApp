@@ -54,15 +54,39 @@ namespace DatingApp.API.Controllers
                 return BadRequest("Name already taken");
             
             var characterToCreate = new Character {};
+            characterToCreate.Name = characterForCreateDto.Name;
+            characterToCreate.Class = characterForCreateDto.Class;
+            characterToCreate.PictureUrl = characterForCreateDto.PictureUrl;
+            characterToCreate.UserId = characterForCreateDto.UserId;
+            characterToCreate.ActiveDungeonId = 1;
+            characterToCreate.Hp = 100;
+            
+            characterToCreate.Progress = new Progress {};
+            characterToCreate.Progress.Character = characterToCreate;
+            characterToCreate.Progress.DungeonProgress = new Collection<DungeonProgress> {};
+            characterToCreate.Progress.DungeonProgress.Add (
+                new DungeonProgress {
+                    DungeonId = 1,
+                    Explored = 0,
+                    Progress = characterToCreate.Progress
+                }
+            );
+            characterToCreate.Progress.AreaProgress = new Collection<AreaProgress> {};
+            int counter = 1;
+            while (counter < 4)
+            {
+                characterToCreate.Progress.AreaProgress.Add (
+                    new AreaProgress {
+                        AreaId = counter,
+                        DungeonId = 1,
+                        Explored = 0,
+                        Progress = characterToCreate.Progress
+                    }
+                );
+                counter++;
+            };
 
             if (characterForCreateDto.Class == "warrior") {
-                characterToCreate.Name = characterForCreateDto.Name;
-                characterToCreate.Class = characterForCreateDto.Class;
-                characterToCreate.PictureUrl = characterForCreateDto.PictureUrl;
-                characterToCreate.UserId = characterForCreateDto.UserId;
-                characterToCreate.ActiveDungeonId = 1;
-                characterToCreate.CharacterCounter = 1;
-                characterToCreate.Hp = 100;
                 characterToCreate.FastAttack = 10;
                 characterToCreate.StrongAttack = 15;
                 characterToCreate.SpecialAttack = 10;
@@ -70,18 +94,6 @@ namespace DatingApp.API.Controllers
                 characterToCreate.StrongDefense = 1;
                 characterToCreate.SpecialDefense = 0;
                 characterToCreate.ClassIcon = "ra-axe";
-                // characterToCreate.FastAttAbility = "Piercing Strike";
-                // characterToCreate.StrongAttAbility = "Decapitate";
-                // characterToCreate.SpecialAttAbility = "Grappling Hook";
-                // characterToCreate.fastDefAbility = "Heavy Armor";
-                // characterToCreate.StrongDefAbility = "Shield Wall";
-                // characterToCreate.SpecialDefAbility = "Ignore Pain";
-                // characterToCreate.FastAttAbilityIcon = "ra-drill";
-                // characterToCreate.StrongAttAbilityIcon = "ra-decapitation";
-                // characterToCreate.SpecialAttAbilityIcon = "ra-grappling-hook";
-                // characterToCreate.fastDefAbilityIcon = "ra-knight-helmet";
-                // characterToCreate.StrongDefAbilityIcon = "ra-castle-flag";
-                // characterToCreate.SpecialDefAbilityIcon = "ra-player-pyromaniac";
                 int[] warriorAbilities = {1, 2, 3, 10, 11, 12};
                 characterToCreate.AbilityCharacters = new Collection<AbilityCharacter> {};
                 foreach (var ability in warriorAbilities) {
@@ -94,13 +106,6 @@ namespace DatingApp.API.Controllers
                 }
                 
             } else if (characterForCreateDto.Class == "rogue") {
-                characterToCreate.Name = characterForCreateDto.Name;
-                characterToCreate.Class = characterForCreateDto.Class;
-                characterToCreate.PictureUrl = characterForCreateDto.PictureUrl;
-                characterToCreate.UserId = characterForCreateDto.UserId;
-                characterToCreate.ActiveDungeonId = 1;
-                characterToCreate.CharacterCounter = 1;
-                characterToCreate.Hp = 100;
                 characterToCreate.FastAttack = 15;
                 characterToCreate.StrongAttack = 10;
                 characterToCreate.SpecialAttack = 10;
@@ -108,18 +113,6 @@ namespace DatingApp.API.Controllers
                 characterToCreate.StrongDefense = 0;
                 characterToCreate.SpecialDefense = 2;
                 characterToCreate.ClassIcon = "ra-plain-dagger";
-                // characterToCreate.FastAttAbility = "Knife Throw";
-                // characterToCreate.StrongAttAbility = "Ambush";
-                // characterToCreate.SpecialAttAbility = "Trap";
-                // characterToCreate.fastDefAbility = "Adrenaline Rush";
-                // characterToCreate.StrongDefAbility = "Dodge";
-                // characterToCreate.SpecialDefAbility = "Vanish";
-                // characterToCreate.FastAttAbilityIcon = "ra-kunai";
-                // characterToCreate.StrongAttAbilityIcon = "ra-blade-bite";
-                // characterToCreate.SpecialAttAbilityIcon = "ra-bear-trap";
-                // characterToCreate.fastDefAbilityIcon = "ra-defibrillate";
-                // characterToCreate.StrongDefAbilityIcon = "ra-player-dodge";
-                // characterToCreate.SpecialDefAbilityIcon = "ra-nuclear";
                 int[] rogueAbilities = {4, 5, 6, 13, 14, 15};
                 characterToCreate.AbilityCharacters = new Collection<AbilityCharacter> {};
                 foreach (var ability in rogueAbilities) {
@@ -132,32 +125,13 @@ namespace DatingApp.API.Controllers
                 }
                 
             } else {
-                characterToCreate.Name = characterForCreateDto.Name;
-                characterToCreate.Class = characterForCreateDto.Class;
-                characterToCreate.PictureUrl = characterForCreateDto.PictureUrl;
-                characterToCreate.UserId = characterForCreateDto.UserId;
-                characterToCreate.ActiveDungeonId = 1;
-                characterToCreate.CharacterCounter = 1;
-                characterToCreate.Hp = 100;
                 characterToCreate.FastAttack = 10;
                 characterToCreate.StrongAttack = 10;
                 characterToCreate.SpecialAttack = 15;
                 characterToCreate.FastDefense = 0;
                 characterToCreate.StrongDefense = 2;
                 characterToCreate.SpecialDefense = 1;
-                characterToCreate.ClassIcon = "ra-crystal-wand";
-                // characterToCreate.FastAttAbility = "Lightning Bolt";
-                // characterToCreate.StrongAttAbility = "Inferno";
-                // characterToCreate.SpecialAttAbility = "Freeze";
-                // characterToCreate.fastDefAbility = "Divert";
-                // characterToCreate.StrongDefAbility = "Flame Shield";
-                // characterToCreate.SpecialDefAbility = "Barrier";
-                // characterToCreate.FastAttAbilityIcon = "ra-focused-lightning";
-                // characterToCreate.StrongAttAbilityIcon = "ra-burning-meteor";
-                // characterToCreate.SpecialAttAbilityIcon = "ra-frost-emblem";
-                // characterToCreate.fastDefAbilityIcon = "ra-divert";
-                // characterToCreate.StrongDefAbilityIcon = "ra-burning-book";
-                // characterToCreate.SpecialDefAbilityIcon = "ra-barrier";                
+                characterToCreate.ClassIcon = "ra-crystal-wand";           
                 int[] mageAbilities = {7, 8, 9, 16, 17, 18};
                 characterToCreate.AbilityCharacters = new Collection<AbilityCharacter> {};
                 foreach (var ability in mageAbilities) {

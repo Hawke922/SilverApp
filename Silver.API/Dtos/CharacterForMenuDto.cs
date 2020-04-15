@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Silver.API.Dtos;
+using Silver.API.Models;
 
 namespace Silver.API.Dtos
 {
@@ -16,20 +17,9 @@ namespace Silver.API.Dtos
         public int FastDefense { get; set; }
         public int StrongDefense { get; set; }
         public int SpecialDefense { get; set; }
-        // public string FastAttAbility { get; set; }
-        // public string StrongAttAbility { get; set; }
-        // public string SpecialAttAbility { get; set; }
-        // public string fastDefAbility { get; set; }
-        // public string StrongDefAbility { get; set; }
-        // public string SpecialDefAbility { get; set; }
-        // public string FastAttAbilityIcon { get; set; }
-        // public string StrongAttAbilityIcon { get; set; }
-        // public string SpecialAttAbilityIcon { get; set; }
-        // public string fastDefAbilityIcon { get; set; }
-        // public string StrongDefAbilityIcon { get; set; }
-        // public string SpecialDefAbilityIcon { get; set; }
         public string ClassIcon { get; set; }
         public int ActiveDungeonId { get; set; }
         public ICollection<AbilitiesForCharacterMenuDto> Abilities { get; set; }
+        public ProgressForMenuDto Progress { get; set; }
     }
 }

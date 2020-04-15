@@ -46,7 +46,7 @@
     </div>
   </div>
   <div class="buttons">
-    <button id="accept" [routerLink]="['/dungmenu/', character.activeDungeonId]"><span>Travel</span></button>
+    <button id="accept" [routerLink]="['/dungmenu/', character.activeDungeonId]" [queryParams]="{ character: this.character.id }"><span>Travel</span></button>
     <button id="customize"><span>Inventory</span></button>
     <button id="back" [routerLink]="['/charselect']"><span>Back</span></button>
   </div>

@@ -14,6 +14,10 @@ namespace Silver.API.Data
         public DbSet<AbilityCharacter> AbilityCharacters { get; set; }
         public DbSet<EnemyAbility> EnemyAbilities { get; set; }
         public DbSet<Type> Types { get; set; }
+        public DbSet<Area> Areas { get; set; }
+        public DbSet<Progress> Progress { get; set; }
+        public DbSet<DungeonProgress> DungeonProgress { get; set; }
+        public DbSet<AreaProgress> AreaProgress { get; set; }
 
         // Making pairings of primary keys unique
         protected override void OnModelCreating(ModelBuilder modelBuilder) {

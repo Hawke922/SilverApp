@@ -1,4 +1,5 @@
 import { Ability } from './ability';
+import { Progress } from './progress';
 
 export interface Character {
     id: number;
@@ -15,4 +16,5 @@ export interface Character {
     strongDefense: number;
     specialDefense: number;
     abilities: Ability[];
+    progress: Progress;
 }

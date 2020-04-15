@@ -1,4 +1,5 @@
 import { Enemy } from './enemy';
+import { Area } from './area';
 
 export interface Dungeon {
     id: number;
@@ -10,4 +11,5 @@ export interface Dungeon {
     backgroundUrl: string;
     thumbnailUrl: string;
     enemies: Enemy[];
+    areas: Area[];
 }

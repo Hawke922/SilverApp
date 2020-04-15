@@ -5,6 +5,7 @@
 
 :root {
   --main-color: #8E0E00;
+  --main-color-gradient: linear-gradient(to right, #140201, #8E0E00, #140201);
   --main-background: linear-gradient(35deg, #383737c4, #292626c7 100%);
   --solid-background: #222;
   --text-shadow: -1px 0 #000, 0 1px 4px #000, 1px 0 4px #000, 0 -1px #000;
@@ -20,7 +21,10 @@
   --special-icon-color-reverse: linear-gradient(#0d0114, #300357); /*3e0166*/
   --special-icon-color: linear-gradient(#300357, #0d0114); /*3e0166*/
   --passive-icon-color: linear-gradient(#7e4a06, #140901);
+  --header-color: linear-gradient(to right, #140901, #7e4a06, #140901);
   --defeat: linear-gradient(#460909, #0c0000 75%);
+  --dark-leather-bg: url("assets/Textures/dark-leather.jpg");
+  --red-stone-bg: url("assets/Textures/red-stone.jpg");
 
 }
 

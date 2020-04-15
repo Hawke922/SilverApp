@@ -14,6 +14,7 @@ export class DungeonMenuResolver implements Resolve<Dungeon> {
     resolve(route: ActivatedRouteSnapshot): Observable<any> {
         const data = forkJoin({
             user: this.userService.getUser(this.authService.decodedToken.nameid),
+            character: this.userService.getCharacter(+route.queryParams['character']),
             dungeon: this.dungeonService.getDungeon(+route.params['id']).pipe(catchError( error => {
                 console.log('Problem retrieving dungeon data');
                 console.log(error);

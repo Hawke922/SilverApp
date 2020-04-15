@@ -39,17 +39,16 @@ namespace Silver.API.Data
 
         public async Task<Character> GetCharacter(int id)
         {
-            // var character = await _context.Characters.Include(p => p.User).FirstOrDefaultAsync(u => u.Id == id);
-            var character = await _context.Characters.Include(p => p.AbilityCharacters).ThenInclude(p => p.Ability).FirstOrDefaultAsync(c => c.Id == id);
-            // IList<AbilityCharacter> abilities = await _context.AbilityCharacters.Include(ability => ability.Ability).Where(ac => ac.CharacterId == id).ToListAsync();
-            // List<AbilityCharacter> abilities = _context.AbilityCharacters.Include(ability => ability.Ability).Where(ac => ac.CharacterId ==id).ToList();
+            var character = await _context.Characters.Include(p => p.Progress).ThenInclude(p => p.DungeonProgress)
+            .Include(p => p.Progress).ThenInclude(p => p.AreaProgress)
+            .Include(p => p.AbilityCharacters).ThenInclude(p => p.Ability).FirstOrDefaultAsync(c => c.Id == id);
 
             return character;
         }
 
         public async Task<Dungeon> GetDungeon(int id)
         {
-            var dungeon = await _context.Dungeons.Include(p => p.Enemies).FirstOrDefaultAsync(u => u.Id == id);
+            var dungeon = await _context.Dungeons.Include(p => p.Enemies).Include(p => p.Areas).FirstOrDefaultAsync(u => u.Id == id);
 
             return dungeon;
         }

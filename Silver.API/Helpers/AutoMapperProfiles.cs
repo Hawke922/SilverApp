@@ -17,6 +17,10 @@ namespace Silver.API.Helpers
             CreateMap<Dungeon, DungeonForMenuDto>();
             CreateMap<Dungeon, DungeonForEncounterDto>();
             CreateMap<Ability, AbilitiesForCharacterMenuDto>();
+            CreateMap<Area, AreaForDungeonMenuDto>();
+            CreateMap<Progress, ProgressForMenuDto>();
+            CreateMap<DungeonProgress, DungeonProgressForMenuDto>();
+            CreateMap<AreaProgress, AreaProgressForMenuDto>();
         }
     }
 }
