@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Enemy } from '../_models/enemy';
 import { Area } from '../_models/area';
+import { DungeonService } from '../_services/dungeon.service';
 
 @Component({
   selector: 'app-dungeon-menu',
@@ -11,16 +12,13 @@ import { Area } from '../_models/area';
 export class DungeonMenuComponent implements OnInit, OnDestroy {
   data: any;
   dungeonProgress: number;
-
-  filterEnemy = (enemy: Enemy) => {
-    return !enemy.isBoss;
-  }
+  styling: {'text-align': 'left;'};
 
   filterArea = (area: Area) => {
     return area.unlockOn <= this.dungeonProgress;
   }
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private dungeonService: DungeonService) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
@@ -49,8 +47,7 @@ export class DungeonMenuComponent implements OnInit, OnDestroy {
   }
 
   print() {
-    console.log(this.data.character.progress.dungeonProgress.filter(
-      dung => dung.dungeonId === this.data.character.activeDungeonId)[0].explored);
+    console.log(this.data);
   }
 
 }

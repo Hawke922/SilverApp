@@ -1,0 +1,42 @@
+<div *ngIf="this.selectedArea" class="area-panel">
+  <div class="area-panel-header">
+    <div class="area-icon">
+      <i class="ra ra-scroll-unfurled ra-lg"></i>
+    </div>
+    <h2>Area Knowledge</h2>
+  </div>
+  <div class="area-panel-description">
+    <div class="explore-description" *ngIf="currentMode === 'explore'">
+      <h3>Explore</h3>
+      <h4>{{ selectedArea.name }} </h4>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum 
+        odit numquam, eaque dolorem dolores quisquam est perspiciatis natus, 
+        vel consequuntur ullam voluptatibus asperiores.</p>
+    </div>
+    <div class="challenge-description" *ngIf="currentMode === 'challenge'">
+      <h3>Challenge</h3>
+      <h4>{{ selectedArea.name }} </h4>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum 
+        odit numquam, eaque dolorem dolores quisquam est perspiciatis natus, 
+        vel consequuntur ullam voluptatibus asperiores.</p>
+    </div>
+  </div>
+  <div class="area-panel-enemies">
+    <h3>Enemies</h3>
+    <div *ngIf="currentMode === 'explore'" class="enemies-explore">
+      <div class="enemy" *ngFor="let enemy of selectedArea.enemies | callback: filterEnemy" placement="bottom" ngbTooltip="{{ enemy.name }} - not encountered yet">
+        <img src="{{ enemy.thumbnailUrl }}" alt="">
+      </div>
+    </div>
+    <div *ngIf="currentMode === 'challenge'" class="enemies-challenge">
+      <div class="enemy" *ngFor="let enemy of selectedArea.enemies | callback: filterBoss" placement="bottom" ngbTooltip="{{ enemy.name }} - not encountered yet">
+        <img src="{{ enemy.thumbnailUrl }}" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="action-panel">
+    <div class="camp" [routerLink]="['/charselect/', data.user.activeCharacterId]"><i class="ra ra-campfire ra-lg"></i><span>Camp</span></div>
+    <div class="challenge" [routerLink]="['/combat-new/', data.user.activeCharacterId]" [queryParams]="{ dung: 1 }" *ngIf="currentMode === 'challenge'"><i class="ra ra-skull ra-lg"></i><span>Challenge</span></div>
+    <div class="explore" [routerLink]="['/combat-new/', data.user.activeCharacterId]" [queryParams]="{ dung: 1 }" *ngIf="currentMode === 'explore'"><i class="ra ra-compass ra-lg"></i><span>Explore</span></div>
+  </div>
+</div>

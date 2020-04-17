@@ -116,13 +116,17 @@ export class MergerComponent implements OnInit {
       setTimeout(() => {
         if (this.processTurn(this.combatData.hero, this.data.character, this.combatData.enemy, this.data.enemy)) {
           setTimeout(() => {
-            this.router.navigate(['/dungmenu/', this.data.character.activeDungeonId]);
+            this.router.navigate([
+              '/dungmenu/', this.data.character.activeDungeonId, {queryParams: { character: this.data.character.id }}
+            ]);
           }, 5000);
         } else {
         setTimeout(() => {
           if (this.processTurn(this.combatData.enemy, this.data.enemy, this.combatData.hero, this.data.character)) {
             setTimeout(() => {
-              this.router.navigate(['/dungmenu/', this.data.character.activeDungeonId]);
+              this.router.navigate([
+                '/dungmenu/', this.data.character.activeDungeonId, {queryParams: { character: this.data.character.id }}
+              ]);
             }, 5000);
           } else {
             setTimeout(() => {
@@ -139,13 +143,17 @@ export class MergerComponent implements OnInit {
 
         if (this.processTurn(this.combatData.enemy, this.data.enemy, this.combatData.hero, this.data.character)) {
           setTimeout(() => {
-            this.router.navigate(['/dungmenu/', this.data.character.activeDungeonId]);
+            this.router.navigate([
+              '/dungmenu/', this.data.character.activeDungeonId, {queryParams: { character: this.data.character.id }}
+            ]);
           }, 5000);
         } else {
           setTimeout(() => {
             if (this.processTurn(this.combatData.hero, this.data.character, this.combatData.enemy, this.data.enemy)) {
               setTimeout(() => {
-                this.router.navigate(['/dungmenu/', this.data.character.activeDungeonId]);
+                this.router.navigate([
+                  '/dungmenu/', this.data.character.activeDungeonId, {queryParams: { character: this.data.character.id }}
+                ]);
             }, 5000);
           } else {
             setTimeout(() => {

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Dungeon } from '../_models/dungeon';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Enemy } from '../_models/enemy';
 
 @Injectable({
@@ -10,6 +10,12 @@ import { Enemy } from '../_models/enemy';
 })
 export class DungeonService {
   baseUrl = environment.apiUrl;
+
+  private selectedAreaSource = new BehaviorSubject<any>(null);
+  selectedArea = this.selectedAreaSource.asObservable();
+
+  private modeSource = new BehaviorSubject<any>({});
+  currentMode = this.modeSource.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -21,4 +27,11 @@ export class DungeonService {
     return this.http.get<Enemy>(this.baseUrl + 'dungeon/encounter/' + id);
   }
 
+  loadSelectedArea(data: any) {
+    this.selectedAreaSource.next(data);
+  }
+
+  loadMode(data: any) {
+    this.modeSource.next(data);
+  }
 }

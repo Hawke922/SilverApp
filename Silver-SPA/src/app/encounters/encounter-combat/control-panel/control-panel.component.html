@@ -25,8 +25,8 @@
   <div class="buttons">
     <button class="enemy"><span>Enemy</span></button>
     <button class="inventory"><span>Inventory</span></button>
-    <button class="log"><span>Combat Log</span></button>
-    <button class="retreat" [routerLink]="['/dungmenu/', data.character.activeDungeonId]"><span>Retreat</span></button>
+    <button class="log" (click)="return()" ><span>Combat Log</span></button>
+    <button class="retreat" [routerLink]="['/dungmenu/', data.character.activeDungeonId]" [queryParams]="{ character: data.character.id }"><span>Retreat</span></button>
   </div>
   <div class="character-stats">
     <div class="character-stats-offense">

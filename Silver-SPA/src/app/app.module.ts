@@ -34,6 +34,9 @@ import { EnemyComponent } from './encounters/encounter-combat/combat-panel/enemy
 import { HeroComponent } from './encounters/encounter-combat/combat-panel/hero/hero.component';
 import { MergerComponent } from './encounters/encounter-combat/combat-panel/merger/merger.component';
 import { CombatService } from './_services/combat.service';
+import { AreaPanelComponent } from './dungeon-menu/area-panel/area-panel.component';
+import { JournalComponent } from './dungeon-menu/journal/journal.component';
+import { AreaCardComponent } from './dungeon-menu/area-card/area-card.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -57,7 +60,10 @@ export function tokenGetter() {
       ControlPanelComponent,
       EnemyComponent,
       HeroComponent,
-      MergerComponent
+      MergerComponent,
+      AreaPanelComponent,
+      AreaCardComponent,
+      JournalComponent
    ],
    imports: [
       BrowserModule,

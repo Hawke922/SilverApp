@@ -1,0 +1,15 @@
+<div class="area-card" [class.areaSelected]="selectedArea?.name === area.name">
+  <span id="name"> {{ area.name }} </span>
+  <div class="explored">
+    <div class="progress-bar-bg">
+      <span class="progress-bar" [style.width.%]="33"></span>
+    </div>
+    <span>33% Explored</span>
+  </div>
+  <button class="explore" (click)="explore(area)">
+    <i id="compass" class="ra ra-compass ra-lg"></i>
+  </button>
+  <button class="challenge" (click)="challenge(area)">
+    <i class="ra ra-skull ra-lg"></i>
+  </button>
+</div>

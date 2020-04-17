@@ -13,7 +13,7 @@
   --main-button-before-background: linear-gradient(to right, #0f0f0f,#222,#070707);
   --strong-color: #b30000;
   --strong-icon-color: linear-gradient(#5a0c0c, #0c0000);
-  --strong-icon-color-reverse: linear-gradient(#0c0000, #5a0c0c ); /*690a05*/
+  --strong-icon-color-reverse: linear-gradient(#0c0000, #5a0c0c); /*690a05*/
   --fast-color: #127a08;
   --fast-icon-color: linear-gradient(#0c4207, #011405); /*095817*/
   --fast-icon-color-reverse: linear-gradient(#011405, #0c4207); /*095817*/
@@ -23,8 +23,15 @@
   --passive-icon-color: linear-gradient(#7e4a06, #140901);
   --header-color: linear-gradient(to right, #140901, #7e4a06, #140901);
   --defeat: linear-gradient(#460909, #0c0000 75%);
+  --explore-color: linear-gradient(#011405, #095817);
+  --explore-color-inverse: linear-gradient(#095817, #011405);
+  --explore-color-fade: linear-gradient(to right, #011405, #095817, #011405);
+  --challenge-color: linear-gradient(#0c0000, #8E0E00);
+  --challenge-color-inverse: linear-gradient(#8E0E00, #0c0000);
+  --camp-color: linear-gradient(#a83500, #140901);
   --dark-leather-bg: url("assets/Textures/dark-leather.jpg");
   --red-stone-bg: url("assets/Textures/red-stone.jpg");
+  --gray-stone-bg: url("assets/Textures/gray-stone.jpg")
 
 }
 
